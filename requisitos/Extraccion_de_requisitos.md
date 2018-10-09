@@ -1,16 +1,16 @@
 # Extraccion de requisitos
 
-## Partes interesadas:
+### Partes interesadas:
 **Contratante:** Duran Rosal, Antonio Manuel.
 **Contratados:** Muñoz Jimenez, Juan Pedro. Lozano Rojas, Javier. Ruiz Requena, Pablo.
 
 
-## Funcionalidad de la aplicacion:
+### Funcionalidad de la aplicacion:
 
 El cliente quiere una aplicacion con la cual poder almacenar y consultar datos de sus alumnos. Dicha aplicacion debera ser capaz de almacenar y controlar los siguientes datos de cada alumno: *DNI, Nombre y apellidos, telefono de contacto, email, dirección postal, Curso mas alto mariculado, fecha de nacimiento, numero de equipo y si es lider de este o no.*
 
 
-## Requisitos Funcionales:
+### Requisitos Funcionales:
 *(En orden de priorización)*
 
 **Inserción:** Capacidad de insertar alumnos introduciendo como minimo los siguientes datos: DNI, nombre y apellidos.             
@@ -24,7 +24,7 @@ El cliente quiere una aplicacion con la cual poder almacenar y consultar datos d
 **Importar:** Capacidad de importar desde un fichero binario.                                                                  
 
 
-## Requisitos No_Funcionales:
+### Requisitos No_Funcionales:
 
 **Sistema:** La aplicacion debera ser comnpatible con Unix linus.                                                            
 **Interfaz:** La aplicacion debera funcionar con lineas de comandos por consola.                                                  
