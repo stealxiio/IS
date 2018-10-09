@@ -1,7 +1,7 @@
 # Extraccion de requisitos
 
 ## Partes interesadas:
-**Contratante:** Duran Rosal, Antonio Manuel.
+**Contratante:** Duran Rosal, Antonio Manuel.         
 **Contratados:** Muñoz Jimenez, Juan Pedro. Lozano Rojas, Javier. Ruiz Requena, Pablo.
 
 
