@@ -1,9 +1,9 @@
 ## (ANVERSO)
 
-**ID:** 002 **Busqueda de alumno**
+**ID:** 003 **Mostrado de alumno**
 ___
 
-Como usuario quiero que la aplicacion tenga la capacidad de buscar y encontrar un alumno.
+Despues de haber buscado un alumno quiero que la aplicacion me muestre sus datos.
 
 **Prioridad:** 2
 ___
@@ -16,4 +16,6 @@ ___
 * Quiero poder buscar dado los apellidos.
 * Quiero poder buscar dado un número de quipo.
 * En los casos de apellido y numero, cuando haya mas de una coincidencia quiero que pregunte por el DNI.
+* quiero que se muestre en HTML o Markdown.
+* El dato de liderazgo debera ir resaltado.
 ___

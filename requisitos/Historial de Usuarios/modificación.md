@@ -1,11 +1,11 @@
 ## (ANVERSO)
 
-**ID:** 002 **Busqueda de alumno**
+**ID:** 005 **Modificación de un alumno**
 ___
 
-Como usuario quiero que la aplicacion tenga la capacidad de buscar y encontrar un alumno.
+Quiero poder buscar y modificar un alumno.
 
-**Prioridad:** 2
+**Prioridad:** 3
 ___
 
 
@@ -16,4 +16,5 @@ ___
 * Quiero poder buscar dado los apellidos.
 * Quiero poder buscar dado un número de quipo.
 * En los casos de apellido y numero, cuando haya mas de una coincidencia quiero que pregunte por el DNI.
+* Que no deje poner mas de un lider por grupo.
 ___
