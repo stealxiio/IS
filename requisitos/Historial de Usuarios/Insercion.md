@@ -6,6 +6,7 @@
 ___
 
 **Actores principales:** Usuario o sistema.
+
 **Actores secundarios:** Alumno.
 ___
 
