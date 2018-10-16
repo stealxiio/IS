@@ -4,8 +4,8 @@
 ___
 
 Como usuario quiero poder insertar alumnos en el sistema.
-***Prioridad***: 1
 
+**Prioridad**: 1
 ___
 
 ## (REVERSO)
