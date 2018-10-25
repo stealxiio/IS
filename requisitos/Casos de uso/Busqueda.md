@@ -30,4 +30,5 @@ ___
 **Flujos alternativos:**
 
  2a. En los casos de búsqueda por apellido y numero, cuando haya mas de una coincidencia se preguntara por el DNI.
+ 
  2b. En el caso en el que el alumno no exista se notificará al usuario de ello.
