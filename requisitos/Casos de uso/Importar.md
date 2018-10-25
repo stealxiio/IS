@@ -18,7 +18,7 @@ ___
 
  1. El caso de uso empieza cuando el usuario quiere importar desde un fichero binario.
  2. Se le pedira al usuario el nombre del fichero binario del que se quiere importar los datos.
- 3. El sistema importa los datos desde el fichero binario.
+ 3. El sistema importa los datos desde el fichero binario usando la funcion Inserción **(ID: 1)**.
 ___
 
 **Postcondiciones:**

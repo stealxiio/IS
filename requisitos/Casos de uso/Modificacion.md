@@ -18,7 +18,7 @@ ___
 **Flujo principal:**
 
  1. El caso de uso empieza cuando el usuario quiere buscar y modificar un alumno.
- 2. Se pide al usuario los datos necesariors para poder buscarlo usando la funcion buscar**(ID: 2)**.
+ 2. Se pide al usuario los datos necesariors para poder buscarlo usando la funcion buscar **(ID: 2)**.
  3. Una vez encontrado el alumno a modificar se volveran a pedir todos los datos.
  4. El sistema modifica el usuario.
 ___
