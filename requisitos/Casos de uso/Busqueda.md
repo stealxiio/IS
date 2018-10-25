@@ -7,7 +7,7 @@ ___
 
 **Actores principales:** Usuario.
 
-**Actores secundarios:** Sistema.
+**Actores secundarios:** Alumno.
 ___
 
 **Precondiciones:**
