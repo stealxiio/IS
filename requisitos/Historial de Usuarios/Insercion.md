@@ -33,4 +33,5 @@ ___
 **Flujos alternativos:**
 
  2a. En el caso en el que el alumno exista ya en el sistema se mostrará un mensaje de error y se volvera a pedir los datos del alumno.
+ 
  2b. En el caso en el que no se inserte bien un dato *(Ej: un nombre en el telefono)* este se volvera a pedir hasta que se inserte bien.
