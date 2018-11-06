@@ -22,8 +22,8 @@ El cliente quiere una aplicacion con la cual poder almacenar y consultar datos d
 **Modificación:** Busqueda y modificacion de los datos de un alumno.                                                             
 **Mostrado de todos los alumnos:** Capacidad de mostrar todos los alumnos de las siguientes maneras: Orden alfabetico (tanto ascendente como descendiente), orden por DNI, orden por curso (Tanto ascendente como descendente).                             
 **Mostrado de todos los alumnos de un equipo:** igual que el anterior pero solo los alumnos de grupo proporcionado.              
-**Exportar:** Capacidad de exportar a un fichero binario.                                                                      
-**Importar:** Capacidad de importar desde un fichero binario.                                                                  
+**Exportar:** Capacidad de exportar a un fichero binario. Solo el coordinador puede usar esta función.                                                                     
+**Importar:** Capacidad de importar desde un fichero binario. Solo el coordinador puede usar esta función.                                                                 
 
 
 ### Requisitos No_Funcionales:
