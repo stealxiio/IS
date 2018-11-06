@@ -1,9 +1,9 @@
-# Extraccion de requisitos
+# Extracción de requisitos
 
 
 ### Partes interesadas:
 **Contratante:** Duran Rosal, Antonio Manuel.                                         
-**Contratados:** Muñoz Jimenez, Juan Pedro. Lozano Rojas, Javier. Ruiz Requena, Pablo.
+**Contratados:** Muñoz Jiménez, Juan Pedro. Lozano Rojas, Javier. Ruiz Requena, Pablo.
 
 
 ### Funcionalidad de la aplicacion:
@@ -19,6 +19,8 @@ El cliente quiere una aplicacion con la cual poder almacenar y consultar datos d
 **Mostrado:** Mostrado de los datos de un alumno en HTML o Markdown. El dato de si es lider o no debera estar bien resaltado.     
 **Borrado:** Busqueda y borrado de un alumno dado un DNI. Pedir confirmación antes de la ejecucion.   
 **Ordenar:** Ordena la base de datos alfabeticamente, por dni, por curso (tanto ascendente como descendiente).
+**Crear copia de seguridad:** Crea una copia de todos los alumnos. Solo el coordinador podra utilizar esta función.
+**Carga copia de seguridad:** Carga una copia de seguridad previamente creada. Solo el coordinador podra usar esta función.
 **Modificación:** Busqueda y modificacion de los datos de un alumno.                                                             
 **Mostrado de todos los alumnos:** Capacidad de mostrar todos los alumnos de las siguientes maneras: Orden alfabetico (tanto ascendente como descendiente), orden por DNI, orden por curso (Tanto ascendente como descendente).                             
 **Mostrado de todos los alumnos de un equipo:** igual que el anterior pero solo los alumnos de grupo proporcionado.              
