@@ -16,7 +16,6 @@ El cliente quiere una aplicacion con la cual poder almacenar y consultar datos d
 
 **Inserción:** Capacidad de insertar alumnos introduciendo como minimo todos los datos excepto equipo y lider de equipo.       
 **Ordenar:** Ordena el listado de alumnos alfabeticamente, por DNI o por curso (tanto ascendente como descendente). El sistema usara automaticamente esta funcion al insertar, borrar o modificar un alumno.
-
 **Busqueda:** Busqueda de alumnos dado un DNI, un apellido y (opcional) un numero de equipo. En el caso de apellido, si hay varios alumnos con el mismo, se pedira el DNI.                               
 **Mostrado:** Mostrado de los datos de un alumno en HTML o Markdown. El dato de si es lider o no debera estar bien resaltado.     
 **Borrado:** Busqueda y borrado de un alumno dado un DNI. Pedir confirmación antes de la ejecucion.                            
