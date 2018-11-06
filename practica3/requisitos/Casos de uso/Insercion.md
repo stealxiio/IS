@@ -1,7 +1,7 @@
 ## Inserción
 
 **ID:** 001
-**Breve descripción:** Se inserta un nuevo alumno en el sistema.
+**Breve descripción:** Se inserta un nuevo alumno en la lista.
 
 ___
 
