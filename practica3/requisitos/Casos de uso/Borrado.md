@@ -31,6 +31,6 @@ ___
 
 **Flujos alternativos:**
 
- 2a. En el caso en el que el alumno no exista en la lista, se mostrará un mensaje de error y se informara al usuario de la existencia del alumno.
+ 2a. En el caso en el que el alumno no exista en la lista, se mostrará un mensaje de error y se informará al usuario de la existencia del alumno.
  
  
