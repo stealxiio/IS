@@ -28,6 +28,7 @@ ___
  * Los datos insertados han de seguir las directrices de la base de datos.
  * El alumno insertado no ha de existir previamente en el sistema.
  * El sistema guarda satisfactoriamente el alumno con sus datos.
+ * Numero de alumnos aumentado en 1.
 ___
 
 **Flujos alternativos:**
