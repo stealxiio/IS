@@ -19,7 +19,7 @@ ___
 
  1. El caso de uso empieza cuando el profesor o la propia lista quiere insertar un alumno.
  2. Se recogen todos los datos necesarios para poder insertarlos.
- 3. El alumno se inserta en el sistema.
+ 3. El alumno se inserta en la lista.
 ___
 
 **Postcondiciones:**
