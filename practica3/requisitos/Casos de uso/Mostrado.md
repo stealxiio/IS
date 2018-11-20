@@ -1,25 +1,25 @@
 ## Mostrado
 
 **ID:** 005
-**Breve descripción:** Se busca y mostrará un alumno del sistema.
+**Breve descripción:** Se muestra un alumno de la lista.
 
 ___
 
-**Actores principales:** Usuario.
+**Actores principales:** Profesor.
 
-**Actores secundarios:** Alumno.
+**Actores secundarios:** Alumno y lista.
 ___
 
 **Precondiciones:**
 
- * El alumno ha de existir en el sistema.
+ * El alumno ha de existir en la lista.
 ___
 
 **Flujo principal:**
 
- 1. El caso de uso empieza cuando el usuario quiere buscar y mostrar un alumno.
- 2. Se pide al usuario los datos necesariors para poder buscarlo usando la funcion buscar **(ID: 2)**.
- 3. Una vez encontrado el alumno se generará un fichero Markdown con toda la información del alumno resaltando el liderazgo.
+ 1. El caso de uso empieza cuando el profesor quiere buscar y mostrar un alumno.
+ 2. Se pide al profesor los datos necesariors para poder buscarlo usando la función buscar **(ID: 2)**.
+ 3. Una vez encontrado, se generará un fichero Markdown con toda la información del alumno resaltando el liderazgo.
 ___
 
 **Postcondiciones:**
@@ -29,4 +29,4 @@ ___
 
 **Flujos alternativos:**
 
- 1a. Si el alumno no existe se notificara al usuario.
+ 1a. Si el alumno no existe se notificará al profesor.
