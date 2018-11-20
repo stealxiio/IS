@@ -1,29 +1,35 @@
  ## Mostrado_de_un_equipo
  
-  **ID:** 007 **Breve descripción:** muestra a todos los alumnos de un equipo.
-  
-  ___
-  **Precondiciones**
-   
-   * Los datos de los alumnos de un equipo.
+**ID:** 007 
+**Breve descripción:** Muestra a todos los alumnos de un mismo equipo.
 
-  ___
-  **Flujo principal**
-  
-  1. El caso de uso comienza cuando el usuario quiere ver todos los alumnos del sistema.
-  2. El sistema buscará a los alumnos cuando se de un número de equipo por la terminal, usando la función Búsqueda (**ID 2**)
-  3. El sistema mostrará la informaciçon en HTML o Markdown.
-  4. El dato de liderazgo del líder del equipo saldrá resaltado.
-  5. Los datos saldrán ordenados por un orden alfabético, por el DNI o el curso más alto en el que estén matriculados los intefrantes del grupo.
-  
-  ___
-  **Postcondiciones**
-  
-   * El sistema ha mostrado a los alumnos del grupo correctamente.
+___
 
-   ___
+**Actores principales:** Profesor.
+
+**Actores secundarios:** Alumno y lista.
+___
+
+**Precondiciones**
    
-  **Flujo alternativo**
+   * Ha de existir al menos un alumno en la lista.
+___
+
+**Flujo principal**
   
-    1a. En el caso de no haber datos sobre el equipo escogido en el sistema, se volverá al menú principal avisando al usuario de que no hay datos del equipo cargados en el sistema. 
+  1. El caso de uso comienza cuando el profesor quiere ver todos los alumnos de un equipo concreto.
+  2. Se le pide al profesor el numero de equipo que desea buscar.
+  3. La lista buscará usando la función Búsqueda (**ID 2**) al equipo deseado.
+  4. Una vez encontrado, se generará un fichero Markdown con toda la información de los alumnos del equipo resaltando el liderazgo.
+  
+___
+**Postcondiciones**
+  
+  * Se generará satisfactoriamente el fichero Markdown del equipo mostrado.
+
+___
+   
+**Flujo alternativo**
+  
+    1a. En el caso de no haber datos sobre el equipo escogido en el sistema, se volverá al menú principal avisando al profesor de que no hay datos de ese equipo.
   
