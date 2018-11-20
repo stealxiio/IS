@@ -1,32 +1,34 @@
 ## Exportar
 
 **ID:** 008
-**Breve descripción:** Se exportan los datos del sistema a un fichero binario.
+**Breve descripción:** Se exportan los datos de la lista a un fichero binario.
 
 ___
 
-**Actores principales:** Usuario o sistema.
+**Actores principales:** Profesor *coordinador*.
 
-**Actores secundarios:** Alumno.
+**Actores secundarios:** Lista.
 ___
 
 **Precondiciones:**
 
- * El sistema tiene que tener al menos un alumno que exportar.
+ * La lista tiene que tener al menos un alumno que exportar.
+ * El profesor debe de ser coordinador.
 ___
 
 **Flujo principal:**
 
- 1. El caso de uso empieza cuando el usuario o el sistema exportar la informacion del sistema a un fichero binario.
- 2. Se le pedira al usuario el nombre del fichero binario en el que se va a exportar los datos.
+ 1. El caso de uso empieza cuando el profesor *coordinador* quiere exportar la información de la lista a un fichero binario.
+ 2. Se le pedirá al profesor *coordinador* el nombre del fichero binario en el que se va a exportar los datos.
+ 3. Se creará un fichero binario con los alumnos de la lista.
 ___
 
 **Postcondiciones:**
 
- * Al finalizar existira un fichero binario con los datos de los alumnos.
+ * Al finalizar existirá un fichero binario con los datos de los alumnos.
 ___
 
 **Flujos alternativos:**
 
- 2a. En el caso en el que sea el sistema el que quiere exportar, se exportará la informacion en un fichero binario llamado "backup".
+
  
