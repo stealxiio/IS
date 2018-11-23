@@ -18,13 +18,13 @@ ___
 **Flujo principal:**
 
  1. El caso de uso empieza cuando el profesor o la propia lista quiere ordenar la lista de alumnos.
- 2. Se recoge el tipo de orden que se desea (Alfabetico, por dni o por mayor curso matriculado. Tanto ascendiente como descendiente)
- 3. la lista se ordena en funcion del tipo de orden proporcionado.
+ 2. Se recoge el tipo de orden que se desea (Alfabético, por DNI o por mayor curso matriculado. Tanto ascendiente como descendiente)
+ 3. La lista se ordena en funcion del tipo de orden proporcionado.
 ___
 
 **Postcondiciones:**
 
- * Numero de alumnos igual.
+ * Al abacar la ordenacion el numero de alumnos ha de ser el mismo.
 ___
 
 **Flujos alternativos:**
