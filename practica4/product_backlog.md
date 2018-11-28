@@ -172,3 +172,37 @@ ___
 * Orden alfabetico, por DNI o por ultimo curso matriculado (tanto ascendiente como descendiente).
 ___
 
+## (ANVERSO)
+
+**ID:** 010 **ordenar**
+___
+
+Funcion usada por otras funciones para mantener ordenada la lista de alumnos
+
+**Prioridad:** 02
+___
+
+
+## (REVERSO)
+___
+
+* Orden alfabetico, por DNI o por ultimo curso matriculado (tanto ascendiente como descendiente).
+* la funcion sera privada, y sera llamada por otras funciones.
+___
+
+## (ANVERSO)
+
+**ID:** 011 **login**
+___
+
+Funcion encargada de comprobar la id del profesor para garantizarle acceso a la lista.
+
+**Prioridad:** 00
+___
+
+
+## (REVERSO)
+___
+
+* Comprobara la id del profesor con respecto a un fichero binario previamente cargado.
+___
