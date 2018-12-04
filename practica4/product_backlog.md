@@ -1,208 +1,30 @@
-## (ANVERSO)
 
-**ID**: 001 **Inserción**
-___
+**ID**: 000 **Esqueleto de las clases** // **Prioridad**: 0 // **Dificultad:** 4 // **tiempo (estimado):** 90 minutos
 
-Como usuario quiero poder insertar alumnos en el sistema.
+**ID**: 001 **Insertar** // **Prioridad**: 1 // **Dificultad:** 4 // **tiempo (estimado):** 45 minutos
 
-**Prioridad**: 1
-___
+**ID**: 002 **Buscar** // **Prioridad**: 1 // **Dificultad:** 4 // **tiempo (estimado):** 180 minutos
 
+**ID**: 003 **Mostrar** // **Prioridad**: 3 // **Dificultad:** 3 // **tiempo (estimado):** 60 minutos
 
-## (REVERSO)
+**ID**: 004 **Borrar** // **Prioridad**: 2 // **Dificultad:** 2 // **tiempo (estimado):** 30 minutos
 
-___
+**ID**: 005 **Modificar** // **Prioridad**: 3 // **Dificultad:** 3 // **tiempo (estimado):** 45 minutos
 
- * Quiero poder insertar todos los datos posibles del alumno.
+**ID**: 006 **Mostrar equipo** // **Prioridad**: 4 // **Dificultad:** 2 // **tiempo (estimado):** 60 minutos
 
-___
+**ID**: 007 **Mostrar todo** // **Prioridad**: 4 // **Dificultad:** 2 // **tiempo (estimado):** 60 minutos
 
-## (ANVERSO)
+**ID**: 008 **Exportar** // **Prioridad**: 5 // **Dificultad:** 2 // **tiempo (estimado):** 30 minutos
 
-**ID:** 004 **Borrado de alumno**
-___
+**ID**: 009 **Importar** // **Prioridad**: 5 // **Dificultad:** 2 // **tiempo (estimado):** 30 minutos
 
-Quiero poder buscar y borrar un alumno.
+**ID**: 010 **Ordenar** // **Prioridad**: 2 // **Dificultad:** 5 // **tiempo (estimado):** 300 minutos
 
-**Prioridad:** 2
-___
+**ID**: 011 **login** // **Prioridad**: 0 // **Dificultad:** 1 // **tiempo (estimado):** 30 minutos
 
+**ID**: 012 **Exportar backup** // **Prioridad**: 6 // **Dificultad:** 1 // **tiempo (estimado):** 15 minutos
 
-## (REVERSO)
-___
+**ID**: 013 **Importar backup** // **Prioridad**: 6 // **Dificultad:** 1 // **tiempo (estimado):** 15 minutos
 
-* Quiero poder buscar dado el DNI.
-* Que pida confirmacion antes de la eliminación.
-___
-
-## (ANVERSO)
-
-**ID:** 002 **Busqueda de alumno**
-___
-
-Como usuario quiero que la aplicacion tenga la capacidad de buscar y encontrar un alumno.
-
-**Prioridad:** 2
-___
-
-
-## (REVERSO)
-___
-
-* Quiero poder buscar dado el DNI.
-* Quiero poder buscar dado los apellidos.
-* Quiero poder buscar dado un número de quipo.
-* En los casos de apellido y numero, cuando haya mas de una coincidencia quiero que pregunte por el DNI.
-___
-
-## (ANVERSO)
-
-**ID:** 008 **Exportar**
-___
-
-Quiero poder exportar los datos a un fichero binario.
-
-**Prioridad:** 5
-___
-
-
-## (REVERSO)
-___
-
-* Quiero poder nombrar el fichero a la hora de crearlo.
-___
-
-## (ANVERSO)
-
-**ID:** 009 **Importar**
-___
-
-Quiero poder importar los datos desde un fichero binario.
-
-**Prioridad:** 6
-___
-
-
-## (REVERSO)
-___
-
-* Quiero poder cargar los datos al sistema proporcionando un fichero binario.
-* Quiero qeu revise que no haya duplicas en las inserciones.
-___
-
-## (ANVERSO)
-
-**ID:** 005 **Modificación de un alumno**
-___
-
-Quiero poder buscar y modificar un alumno.
-
-**Prioridad:** 3
-___
-
-
-## (REVERSO)
-___
-
-* Quiero poder buscar dado el DNI.
-* Quiero poder buscar dado los apellidos.
-* Quiero poder buscar dado un número de quipo.
-* En los casos de apellido y numero, cuando haya mas de una coincidencia quiero que pregunte por el DNI.
-* Que no deje poner mas de un lider por grupo.
-___
-
-## (ANVERSO)
-
-**ID:** 003 **Mostrado de alumno**
-___
-
-Despues de haber buscado un alumno quiero que la aplicacion me muestre sus datos.
-
-**Prioridad:** 2
-___
-
-
-## (REVERSO)
-___
-
-* Quiero poder buscar dado el DNI.
-* Quiero poder buscar dado los apellidos.
-* Quiero poder buscar dado un número de quipo.
-* En los casos de apellido y numero, cuando haya mas de una coincidencia quiero que pregunte por el DNI.
-* quiero que se muestre en HTML o Markdown.
-* El dato de liderazgo debera ir resaltado.
-___
-
-## (ANVERSO)
-
-**ID:** 007 **Mostrado de todos los alumnos de un equipo**
-___
-
-Quiero tener una opcion que me muestre los datos de todos los alumnos pertenecientes a un equipo en concreto.
-
-**Prioridad:** 4
-___
-
-
-## (REVERSO)
-___
-
-* busqueda de los alumnos dado un número de equipo.
-* quiero que se muestre en HTML o Markdown.
-* El dato de liderazgo debera ir resaltado.
-* Orden alfabetico, por DNI o por ultimo curso matriculado (tanto ascendiente como descendiente).
-___
-
-## (ANVERSO)
-
-**ID:** 006 **Mostrado de todos los alumnos**
-___
-
-Quiero tener una opcion que me muestre los datos de todos los alumnos.
-
-**Prioridad:** 4
-___
-
-
-## (REVERSO)
-___
-
-* quiero que se muestre en HTML o Markdown.
-* El dato de liderazgo debera ir resaltado.
-* Orden alfabetico, por DNI o por ultimo curso matriculado (tanto ascendiente como descendiente).
-___
-
-## (ANVERSO)
-
-**ID:** 010 **ordenar**
-___
-
-Funcion usada por otras funciones para mantener ordenada la lista de alumnos
-
-**Prioridad:** 02
-___
-
-
-## (REVERSO)
-___
-
-* Orden alfabetico, por DNI o por ultimo curso matriculado (tanto ascendiente como descendiente).
-* la funcion sera privada, y sera llamada por otras funciones.
-___
-
-## (ANVERSO)
-
-**ID:** 011 **login**
-___
-
-Funcion encargada de comprobar la id del profesor para garantizarle acceso a la lista.
-
-**Prioridad:** 00
-___
-
-
-## (REVERSO)
-___
-
-* Comprobara la id del profesor con respecto a un fichero binario previamente cargado.
-___
+**ID**: 014 **registrar** // **Prioridad**: 0 // **Dificultad:** 2 // **tiempo (estimado):** 30 minutos
