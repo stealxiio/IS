@@ -1,5 +1,5 @@
 
-**ID**: 000 **Esqueleto de las clases** // **Prioridad**: 0 // **Dificultad:** 4 // **tiempo (estimado):** 90 minutos
+**ID**: 000 **Esqueleto de las clases** // **Prioridad**: 0 // **Dificultad:** 4 // **tiempo (estimado):** 60 minutos
 
 **ID**: 001 **Insertar** // **Prioridad**: 1 // **Dificultad:** 4 // **tiempo (estimado):** 45 minutos
 
@@ -28,3 +28,5 @@
 **ID**: 013 **Importar backup** // **Prioridad**: 6 // **Dificultad:** 1 // **tiempo (estimado):** 15 minutos
 
 **ID**: 014 **registrar** // **Prioridad**: 0 // **Dificultad:** 2 // **tiempo (estimado):** 30 minutos
+
+**ID**: 015 **Interfaz** // **Prioridad**: 1 // **Dificultad:** 4 // **tiempo (estimado):** 120 minutos
