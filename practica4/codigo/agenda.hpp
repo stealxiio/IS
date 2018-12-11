@@ -21,7 +21,7 @@ class Agenda {
 	public:
 
 		inline Agenda(){
-			_numerAlumnos=0;
+			
 			
 		}
 
@@ -45,9 +45,11 @@ class Agenda {
 
 		bool insertar(Alumno aux);
 
-		//bool insertar(Alumno aux);
+		bool esAlumno(Alumno aux);
 
-		Alumno busqueda(Alumno aux);
+		Alumno buscarAlumno(string dni);
+
+		Alumno buscarAlumno(string nombre, string apellidos);
 
 		bool mostrarAlumno(Alumno aux);
 

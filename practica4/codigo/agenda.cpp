@@ -70,10 +70,8 @@ void Agenda::insertar(){
 //Sobrecarga de la funcion insertar usada en la carga de datos desde un fichero.
 void Agenda::insertar(Alumno aux){
 
-	//Busqueda alumno
-	encontrado = BuscarAlumno(aux);
 
-	if(encontrado){
+	if(esAlumno(aux)){
 
 		//Alumno Existe
 		cout << "El alumno ya existe en la agenda" << endl;
@@ -236,5 +234,21 @@ bool descendenteDNI(Alumno alumno1, Alumno alumno2){
 		i++;
 	}
 	return ( alumno1.getDNI().length() < alumno2.getDNI().length() );
+
+}
+
+
+bool Agenda::esAlumno(Alumno aux){
+
+
+	for (int i = 0; i < getNumeroAlumnos(); ++i)
+	{
+		if (_listaAlumnos[i].getDni() == aux.getDni())
+		{
+			return true;
+		}
+	}
+
+	return false;
 
 }
