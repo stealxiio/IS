@@ -22,7 +22,6 @@ class Agenda {
 
 		inline Agenda(){
 			
-			
 		}
 
 		//falta destructor

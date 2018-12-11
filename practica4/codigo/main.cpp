@@ -34,6 +34,7 @@ int main(){
 	string pass = "";
 
 	Alumno aux(2, 3, true, "31015701V", "12/12/1222", "mj", "JP", "correo", 657462286, 145002);
+	Agenda agenda;
 
 
 	do{
@@ -57,6 +58,10 @@ int main(){
 
 	
 	int opcion;
+	string nombre, apellidos, dni, correo, nacimiento, lid;
+	int telefono, postal, curso, equipo;
+
+	bool lider=false;
 
 	do{
 		// Se elige la opción del menún
@@ -91,8 +96,6 @@ int main(){
 					cout << "[2] Grabar fichero" << endl;
 					cout << RESET;
 					break;
-			/////////////////////////////////////////////////////////////////////////////
-			/////////////////////////////////////////////////////////////////////////////
 
 			case 3: 
 					PLACE(25,1);
@@ -107,11 +110,65 @@ int main(){
 					cout << RESET;
 					break;
 
+
+////////////////////////////////////////////////////////////////////////////
+					////////////////////////////////////////////////////
+
+
 			case 5: 
-					PLACE(25,1);
-					cout << BRED;
-					cout << "[0] Fin del programa" << endl;
+					
+
+					PLACE(1,1);
+					cout << BIBLUE;
+					cout << "[5] Insertar Alumno" << endl;
 					cout << RESET;
+					//Solicitud de datos
+
+					cout << "Nombre del alumno"<< endl;
+					cin >> nombre;
+					cout << "Apellidos del alumno"<< endl;
+					cin >> apellidos;
+					cout << "DNI del alumno"<< endl;
+					cin >> dni;
+					cout << "Telefono del alumno"<< endl;
+					cin >> telefono;
+					cout << "E-mail del alumno"<< endl;
+					cin >> correo;
+					cout << "Codigo postal del alumno"<< endl;
+					cin >> postal;
+					cout << "Curso mas alto matriculado del alumno"<< endl;
+					cin >> curso;
+					cout << "Fecha de nacimiento del alumno"<< endl;
+					cin >> nacimiento;
+					cout << "Equipo del alumno"<< endl;
+					cin >> equipo;
+					cout << "¿Es lider? (Y/N)"<< endl;
+					cin >> lid;
+					if (lid=="Y")
+					{
+						lider=true;
+					}
+					
+					aux.setCurso(curso);	
+					aux.setEquipo(equipo);
+					aux.setLider(lider);
+					aux.setDni(dni);
+					aux.setNacimiento(nacimiento);
+					aux.setApellidos(apellidos);
+					aux.setNombre(nombre);
+					aux.setCorreo(correo);
+					aux.setTelefono(telefono);
+					aux.setPostal(postal);
+
+					if (agenda.insertar(aux))
+					{
+						cout << "Alumno insertado satisfactoriamente.";
+					}
+					else{
+						cout << "El alumno no se ha podido insertar.";
+					}
+					cin.ignore();
+
 					break;
 
 			case 6:

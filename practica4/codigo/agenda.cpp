@@ -242,124 +242,11 @@ void Agenda::ordenar(int criterioOrdenacion, bool descendente){
 
 }
 
-/*
-bool ascendenteAlfabeticamente(const Alumno alumno1&, const Alumno alumno2&){
-
-	unsigned int i=0;
-
-	while( (i < alumno1.getNombre().length()) && (i < alumno2.getNombre().length()) ){
-
-		if( tolower(alumno1.getNombre()[i])<tolower(alumno2.getNombre()[i])){
-
-			return true;
-
-		}else if( tolower(alumno1.getNombre()[i])>tolower(alumno2.getNombre()[i]) ){
-
-			return false;
-
-		}
-		i++;
-	}
-	return ( alumno1.getNombre().length() < alumno2.getNombre().length() );
-
-}
-
-
-bool descendenteAlfabeticamente(Alumno alumno1, Alumno alumno2){
-
-	unsigned int i=0;
-
-	while( (i < alumno1.getNombre().length()) && (i < alumno2.getNombre().length()) ){
-
-		if( tolower(alumno1.getNombre()[i])>tolower(alumno2.getNombre()[i])){
-
-			return true;
-
-		}else if( tolower(alumno1.getNombre()[i])<tolower(alumno2.getNombre()[i]) ){
-
-			return false;
-
-		}
-		i++;
-	}
-	return ( alumno1.getNombre().length() < alumno2.getNombre().length() );
-
-}
-
-
-bool ascendenteCurso(Alumno alumno1, Alumno alumno2){
-
-	return ( alumno1.getCurso() < alumno2.getCurso() );
-
-}
-
-bool descendenteCurso(Alumno alumno1, Alumno alumno2){
-
-	return ( alumno1.getCurso() > alumno2.getCurso() );
-
-}
-
-bool ascendenteDNI(Alumno alumno1, Alumno alumno2){
-
-	unsigned int i=0;
-
-	while( (i < alumno1.getDni().length()) && (i < alumno2.getDni().length()) ){
-
-		if( tolower(alumno1.getDni()[i])<tolower(alumno2.getDni()[i])){
-
-			return true;
-
-		}else if( tolower(alumno1.getDni()[i])>tolower(alumno2.getDni()[i]) ){
-
-			return false;
-
-		}
-		i++;
-	}
-	return ( alumno1.getDni().length() < alumno2.getDni().length() );
-
-}
-
-
-bool descendenteDNI(Alumno alumno1, Alumno alumno2){
-
-	unsigned int i=0;
-
-	while( (i < alumno1.getDni().length()) && (i < alumno2.getDni().length()) ){
-
-		if( tolower(alumno1.getDni()[i])>tolower(alumno2.getDni()[i])){
-
-			return true;
-
-		}else if( tolower(alumno1.getDni()[i])<tolower(alumno2.getDni()[i]) ){
-
-			return false;
-
-		}
-		i++;
-	}
-	return ( alumno1.getDni().length() < alumno2.getDni().length() );
-
-}
-*/
 
 bool Agenda::esAlumno(Alumno aux){
 
-/*
-
-	for (int i = 0; i < getNumeroAlumnos(); ++i)
-	{
-		if (_listaAlumnos[i].getDni() == aux.getDni())
-		{
-			return true;
-		}
-	}
-*/
-
 	list<Alumno>::iterator it;
 	for(it = _listaAlumnos.begin(); it != _listaAlumnos.end(); it++){
-
-		
 
 		if (it->getDni() == aux.getDni())
 		{
@@ -374,6 +261,7 @@ bool Agenda::esAlumno(Alumno aux){
 
 Alumno Agenda::buscarAlumno(string dni){
 
+	Alumno vacio(0, 0, false, "0", "", "", "", "", 0, 0);
 	for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
 	{
 		if (it->getDni() == dni)
@@ -382,6 +270,6 @@ Alumno Agenda::buscarAlumno(string dni){
 			return _listaAlumnos.front();
 		}
 	}
-	return NULL;
+	return vacio;
 
 }
