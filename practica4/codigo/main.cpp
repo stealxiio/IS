@@ -1,12 +1,52 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "menu.hpp"
 #include "macros.hpp"
 
 
+
 using namespace std;
 
+bool login(string id, string pass){
+	if ((id=="x") &&(pass=="123"))
+	{
+		cout << BRED;
+		cout << "El ID o la contraseña no son correctos";
+		cout << RESET;
+		cin.ignore();
+
+		cout << CLEAR_SCREEN;
+
+		return false;
+	}
+	return true;
+
+}
+
 int main(){
+	string id = "";
+	string pass = "";
+
+
+	do{
+
+		cout << CLEAR_SCREEN;
+		PLACE(25,1);
+		cout << BIBLUE;
+		cout << "Introduzca ID: ";
+		cout << RESET;
+		cin >> id;
+		cout << CLEAR_SCREEN;
+		PLACE(25,1);
+		cout << BIBLUE;
+		cout << "Introduzca Contraseña: ";
+		cout << RESET;
+		cin>> pass;
+   		
+		cin.ignore();
+	}while(login(id, pass)==false);
+
 
 	
 	int opcion;
@@ -136,3 +176,7 @@ int main(){
 
 	return 0;
 }
+
+
+
+

@@ -68,10 +68,8 @@ void Agenda::insertar(){
 //Sobrecarga de la funcion insertar usada en la carga de datos desde un fichero.
 void Agenda::insertar(Alumno aux){
 
-	//Busqueda alumno
-	encontrado = BuscarAlumno(aux);
 
-	if(encontrado){
+	if(esAlumno(aux)){
 
 		//Alumno Existe
 		cout << "El alumno ya existe en la agenda" << endl;
@@ -84,5 +82,21 @@ void Agenda::insertar(Alumno aux){
 		//lista.sort(compare);	//Compare es una funcion auxiliar tipo bool que indica la ordenacion de elementos ( se debe de codificar )
 
 	}
+
+}
+
+
+bool Agenda::esAlumno(Alumno aux){
+
+
+	for (int i = 0; i < getNumeroAlumnos(); ++i)
+	{
+		if (_listaAlumnos[i].getDni() == aux.getDni())
+		{
+			return true;
+		}
+	}
+
+	return false;
 
 }
