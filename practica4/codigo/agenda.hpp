@@ -57,7 +57,7 @@ class Agenda {
 
 		//Podemos hacer los 3 ordenar en la misma funcion de ordenar 
 		//pasandole un int que diga el criterio con el que se quiere ordenar
-		bool ordenar(int criterio );
+		void ordenar(int criterioOrdenacion, bool descendente);
 		
 		bool mofidicar(Alumno aux);
 
