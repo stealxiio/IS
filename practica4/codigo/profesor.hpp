@@ -1,5 +1,5 @@
-#ifndef _ALUMNO_HPP_
-#define _ALUMNO_HPP_
+#ifndef _PROFESOR_HPP_
+#define _PROFESOR_HPP_
 
 
 #include <iostream>
@@ -39,11 +39,11 @@ class Profesor : public Persona {
 
 
 		//Gets:
-		inline int getId() const{
+		inline string getId() const{
 			return _id;
 		}
 
-		inline int getRol() const{
+		inline string getRol() const{
 			return _rol;
 		}
 
@@ -57,7 +57,7 @@ class Profesor : public Persona {
 			this->_id = id;
 		}
 
-		inline void setEquipo(string rol) {
+		inline void setRol(string rol) {
 			this->_rol = rol;
 		}
 

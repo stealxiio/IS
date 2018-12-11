@@ -69,20 +69,22 @@ void Agenda::insertar(){
 
 
 //Sobrecarga de la funcion insertar usada en la carga de datos desde un fichero.
-void Agenda::insertar(Alumno aux){
+bool Agenda::insertar(Alumno aux){
 
 
 	if(esAlumno(aux)){
 
 		//Alumno Existe
-		cout << "El alumno ya existe en la agenda" << endl;
+		//cout << "El alumno ya existe en la agenda" << endl;
+		return false;
 
 	}else{
 
 		//Alumno No Existe
-		lista.push_back(aux);
+		_listaAlumnos.push_back(aux);
 		//Se ordena despues de insertar?
 		//ordenar(criterio, descendente?)	//Compare es una funcion auxiliar tipo bool que indica la ordenacion de elementos ( se debe de codificar )
+		return true;
 
 	}
 
@@ -104,15 +106,15 @@ void Agenda::ordenar(int criterioOrdenacion, bool descendente){
 
 		if(criterioOrdenacion == 0){
 
-			lista.sort(ascendenteAlfabeticamente);
+			_listaAlumnos.sort(ascendenteAlfabeticamente);
 
 		}else if(criterioOrdenacion == 1){
 
-			lista.sort(ascendenteCurso);
+			_listaAlumnos.sort(ascendenteCurso);
 
 		}else if(criterioOrdenacion == 2){
 
-			lista.sort(ascendenteDNI);
+			_listaAlumnos.sort(ascendenteDNI);
 
 		}
 		
@@ -123,15 +125,15 @@ void Agenda::ordenar(int criterioOrdenacion, bool descendente){
 
 		if(criterioOrdenacion == 0){
 
-			lista.sort(descendenteAlfabeticamente);
+			_listaAlumnos.sort(descendenteAlfabeticamente);
 
 		}else if(criterioOrdenacion == 1){
 
-			lista.sort(descendenteCurso);
+			_listaAlumnos.sort(descendenteCurso);
 
 		}else if(criterioOrdenacion == 2){
 
-			lista.sort(descendenteDNI);
+			_listaAlumnos.sort(descendenteDNI);
 			
 		}
 
@@ -139,7 +141,7 @@ void Agenda::ordenar(int criterioOrdenacion, bool descendente){
 
 }
 
-bool ascendenteAlfabeticamente(Alumno::Alumno alumno1, Alumno alumno2){
+bool ascendenteAlfabeticamente(Alumno alumno1, Alumno alumno2){
 
 	unsigned int i=0;
 
