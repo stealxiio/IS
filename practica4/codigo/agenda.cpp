@@ -262,7 +262,8 @@ Alumno Agenda::buscarAlumno(string dni){
 	{
 		if (it->getDni() == dni)
 		{
-			return *it;
+			_listaAlumnos.begin()=it;
+			return _listaAlumnos.front();
 		}
 	}
 	return NULL;
