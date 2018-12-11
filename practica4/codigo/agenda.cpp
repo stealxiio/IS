@@ -7,7 +7,9 @@
 #include "profesor.hpp"
 #include "agenda.hpp"
 
+
 using namespace std;
+
 
 //Si es la interfaz la que se relaciona con el profesor 
 //entonces no es necesaria esta funcion de abajo
@@ -81,8 +83,158 @@ void Agenda::insertar(Alumno aux){
 		//Alumno No Existe
 		lista.push_back(aux);
 		//Se ordena despues de insertar?
-		//lista.sort(compare);	//Compare es una funcion auxiliar tipo bool que indica la ordenacion de elementos ( se debe de codificar )
+		//ordenar(criterio, descendente?)	//Compare es una funcion auxiliar tipo bool que indica la ordenacion de elementos ( se debe de codificar )
 
 	}
+
+}
+
+void Agenda::ordenar(int criterioOrdenacion, bool descendente){
+
+	//alfabeticamente, ascendente, descendente, curso mas alto, dni
+
+	/* Se puede ordenar segun los siguientes criterios:
+			0 == alfabeticamente
+			1 == curso mas alto matriculado
+			2 == DNI
+		El bool descendente indica si se hace la ordenacion de manera descendente o no
+	*/
+
+	if(descendente == false){
+		//De manera Ascendente
+
+		if(criterioOrdenacion == 0){
+
+			lista.sort(ascendenteAlfabeticamente);
+
+		}else if(criterioOrdenacion == 1){
+
+			lista.sort(ascendenteCurso);
+
+		}else if(criterioOrdenacion == 2){
+
+			lista.sort(ascendenteDNI);
+
+		}
+		
+
+
+	}else{
+		//De manera Descendente
+
+		if(criterioOrdenacion == 0){
+
+			lista.sort(descendenteAlfabeticamente);
+
+		}else if(criterioOrdenacion == 1){
+
+			lista.sort(descendenteCurso);
+
+		}else if(criterioOrdenacion == 2){
+
+			lista.sort(descendenteDNI);
+			
+		}
+
+	}
+
+}
+
+bool ascendenteAlfabeticamente(Alumno::Alumno alumno1, Alumno alumno2){
+
+	unsigned int i=0;
+
+	while( (i < alumno1.getNombre().length()) && (i < alumno2.getNombre().length()) ){
+
+		if( tolower(alumno1.getNombre()[i])<tolower(alumno2.getNombre()[i])){
+
+			return true;
+
+		}else if( tolower(alumno1.getNombre()[i])>tolower(alumno2.getNombre()[i]) ){
+
+			return false;
+
+		}
+		i++;
+	}
+	return ( alumno1.getNombre().length() < alumno2.getNombre().length() );
+
+}
+
+
+bool descendenteAlfabeticamente(Alumno alumno1, Alumno alumno2){
+
+	unsigned int i=0;
+
+	while( (i < alumno1.getNombre().length()) && (i < alumno2.getNombre().length()) ){
+
+		if( tolower(alumno1.getNombre()[i])>tolower(alumno2.getNombre()[i])){
+
+			return true;
+
+		}else if( tolower(alumno1.getNombre()[i])<tolower(alumno2.getNombre()[i]) ){
+
+			return false;
+
+		}
+		i++;
+	}
+	return ( alumno1.getNombre().length() < alumno2.getNombre().length() );
+
+}
+
+
+bool ascendenteCurso(Alumno alumno1, Alumno alumno2){
+
+	return ( alumno1.getCurso() < alumno2.getCurso() );
+
+}
+
+bool descendenteCurso(Alumno alumno1, Alumno alumno2){
+
+	return ( alumno1.getCurso() > alumno2.getCurso() );
+
+}
+
+bool ascendenteDNI(Alumno alumno1, Alumno alumno2){
+
+	unsigned int i=0;
+
+	while( (i < alumno1.getDNI().length()) && (i < alumno2.getDNI().length()) ){
+
+		if( tolower(alumno1.getDNI()[i])<tolower(alumno2.getDNI()[i])){
+
+			return true;
+
+		}else if( tolower(alumno1.getDNI()[i])>tolower(alumno2.getDNI()[i]) ){
+
+			return false;
+
+		}
+		i++;
+	}
+	return ( alumno1.getDNI().length() < alumno2.getDNI().length() );
+
+}
+
+
+bool descendenteDNI(Alumno alumno1, Alumno alumno2){
+
+	unsigned int i=0;
+
+	while( (i < alumno1.getDNI().length()) && (i < alumno2.getDNI().length()) ){
+
+		if( tolower(alumno1.getDNI()[i])>tolower(alumno2.getDNI()[i])){
+
+			return true;
+
+		}else if( tolower(alumno1.getDNI()[i])<tolower(alumno2.getDNI()[i]) ){
+
+			return false;
+
+		}
+		i++;
+	}
+	return ( alumno1.getDNI().length() < alumno2.getDNI().length() );
 
 }

@@ -16,7 +16,6 @@ class Agenda {
 
 	private:
 
-		int _numerAlumnos;
 		list<Alumno> _listaAlumnos;
 
 	public:
