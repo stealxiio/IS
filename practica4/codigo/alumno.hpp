@@ -20,7 +20,8 @@ class Alumno : public Persona {
 
 	public:
 
-		inline Persona(int cursoAlto, int numeroEquipo, bool lider = false, string dni, string nacimiento, string apellidos, string nombre, string correo = "correo@mail.com", int telefono = 000000000, int postal = 00000)
+		inline Alumno(int cursoAlto, int numeroEquipo, bool lider = false, string dni = "", string nacimiento = "", 
+						string apellidos = "", string nombre = "", string correo = "correo@mail.com", int telefono = 000000000, int postal = 00000)
 						:Persona(dni, nacimiento, apellidos, nombre, correo, telefono, postal){
 
 			this->setCurso(cursoAlto);	

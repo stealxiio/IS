@@ -15,7 +15,7 @@ class Persona{
 
 		string _dni;
 		string _nacimiento;
-		string _apellidos
+		string _apellidos;
 		string _nombre;
 		string _correo;
 		int _telefono;
@@ -23,7 +23,7 @@ class Persona{
 
 	public:
 
-		inline Persona(string dni, string nacimiento, string apellidos, string nombre, string correo = "correo@mail.com", int telefono = 000000000, int postal = 00000){
+		inline Persona(string dni = "00000000X", string nacimiento = "00/00/0000", string apellidos = "", string nombre = "", string correo = "correo@mail.com", int telefono = 000000000, int postal = 00000){
 
 			this->setDni(dni);
 			this->setNacimiento(nacimiento);
@@ -56,11 +56,11 @@ class Persona{
 			return _correo;
 		}
 
-		inline string getTelefono()const{
+		inline int getTelefono()const{
 			return _telefono;
 		}
 
-		inline string getPostal()const{
+		inline int getPostal()const{
 			return _postal;
 		}
 
@@ -86,7 +86,7 @@ class Persona{
 		}
 
 		inline void setTelefono(int telefono){
-			this->_nombre = nombre;
+			this->_telefono = telefono;
 		}
 
 		inline void setPostal(int postal){

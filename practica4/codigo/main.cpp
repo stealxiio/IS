@@ -1,8 +1,13 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <list>
 #include "menu.hpp"
 #include "macros.hpp"
+#include "persona.hpp"
+#include "alumno.hpp"
+#include "profesor.hpp"
+#include "agenda.hpp"
 
 
 
@@ -27,6 +32,8 @@ bool login(string id, string pass){
 int main(){
 	string id = "";
 	string pass = "";
+
+	Alumno aux(2, 3, true, "31015701V", "12/12/1222", "mj", "JP", "correo", 657462286, 145002);
 
 
 	do{
@@ -127,10 +134,11 @@ int main(){
 
 
 			case 8: 
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
-					cout << "[0] Fin del programa" << endl;
+					cout << "[8] Mostrar Alumno" << endl;
 					cout << RESET;
+					cout << aux.getDni() << endl;
 					break;
 
 			case 9: 

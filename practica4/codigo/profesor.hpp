@@ -11,7 +11,7 @@
 
 using namespace std;
 
-class Alumno : public Persona {
+class Profesor : public Persona {
 
 	private:
 
@@ -22,7 +22,7 @@ class Alumno : public Persona {
 
 	public:
 
-		inline Persona(string id, string rol, string dni, string nacimiento, string apellidos, string nombre, string correo = "correo@mail.com", int telefono = 000000000, int postal = 00000)
+		inline Profesor(string id, string rol, string dni, string nacimiento = "00/00/0000", string apellidos = "", string nombre = "", string correo = "correo@mail.com", int telefono = 000000000, int postal = 00000)
 						:Persona(dni, nacimiento, apellidos, nombre, correo, telefono, postal){
 
 			this->setId(id);	
