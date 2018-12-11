@@ -255,3 +255,16 @@ bool Agenda::esAlumno(Alumno aux){
 	return false;
 
 }
+
+Alumno Agenda::buscarAlumno(string dni){
+
+	for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+	{
+		if (it->getDni() == dni)
+		{
+			return *it;
+		}
+	}
+	return NULL;
+
+}
