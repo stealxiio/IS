@@ -19,7 +19,7 @@
 
 -**ID**: 009 **Importar** // **Prioridad**: 5 // **Dificultad:** 2 // **tiempo (estimado):** 30 minutos
 
-**ID**: 010 **Ordenar** // **Prioridad**: 2 // **Dificultad:** 5 // **tiempo (estimado):** 300 minutos
+-**ID**: 010 **Ordenar** // **Prioridad**: 2 // **Dificultad:** 5 // **tiempo (estimado):** 300 minutos
 
 **ID**: 011 **login** // **Prioridad**: 0 // **Dificultad:** 1 // **tiempo (estimado):** 30 minutos
 
