@@ -3,6 +3,8 @@
 #include <cassert>
 #include <string>
 #include <list>
+#include <fstream>
+#include <cstring>
 #include "persona.hpp"
 #include "alumno.hpp"
 #include "profesor.hpp"
@@ -266,10 +268,101 @@ Alumno Agenda::buscarAlumno(string dni){
 	{
 		if (it->getDni() == dni)
 		{
-			_listaAlumnos.begin()=it;
-			return _listaAlumnos.front();
+			return *it;
 		}
 	}
 	return vacio;
+
+}
+
+//Pues hay un problema, no se si mostrar alumno se le tiene que pasar un alumno o un dni asi que hago ambas y se borra la que no sea
+
+bool Agenda::mostrarAlumno(Alumno aux){
+
+	ofstream fs;
+	Alumno alumnoMostrado(0, 0, false, "0", "", "", "", "", 0, 0);
+
+	if(esAlumno(aux)){
+
+		alumnoMostrado = buscarAlumno(aux.getDni());
+
+		string NombreAux = alumnoMostrado.getNombre() + ".md"; 
+		char NombreFichero[100];
+		strcpy(NombreFichero,NombreAux.c_str());
+		fs.open (NombreFichero, std::ofstream::out | std::ofstream::app);
+
+		if(fs.is_open()){
+
+			fs << "---" << endl;
+			fs << " Nombre: " << alumnoMostrado.getNombre() << endl;
+			fs << " Apellidos: " << alumnoMostrado.getApellidos() << endl;
+			fs << " DNI: " << alumnoMostrado.getDni() << endl;
+			fs << " Telefono: " << alumnoMostrado.getTelefono() << endl;
+			fs << " Correo: " << alumnoMostrado.getCorreo() << endl;
+			fs << " Postal: " << alumnoMostrado.getPostal() << endl;
+			fs << " Nacimiento: " << alumnoMostrado.getNacimiento() << endl;
+			fs << " Curso: " << alumnoMostrado.getCurso() << endl;
+			fs << " Equipo: " << alumnoMostrado.getEquipo() << endl;
+			fs << " **Lider: " << alumnoMostrado.getLider() <<"**" << endl;
+			fs << "---" << endl;
+
+			fs.close();
+
+		}else{ 
+
+			return false;
+		}
+
+	}else{
+
+		return false;
+
+	}
+}
+
+
+bool Agenda::mostrarAlumno(string dni){
+
+	ofstream fs;
+	Alumno alumnoMostrado(0, 0, false, dni, "", "", "", "", 0, 0);
+
+	if(esAlumno(alumnoMostrado)){
+
+		alumnoMostrado = buscarAlumno(dni);
+
+		string NombreAux = alumnoMostrado.getNombre() + ".md"; 
+		char NombreFichero[100];
+		strcpy(NombreFichero,NombreAux.c_str());
+		fs.open (NombreFichero, std::ofstream::out | std::ofstream::app);
+
+		if(fs.is_open()){
+
+			fs << "---" << endl;
+			fs << " Nombre: " << alumnoMostrado.getNombre() << endl;
+			fs << " Apellidos: " << alumnoMostrado.getApellidos() << endl;
+			fs << " DNI: " << alumnoMostrado.getDni() << endl;
+			fs << " Telefono: " << alumnoMostrado.getTelefono() << endl;
+			fs << " Correo: " << alumnoMostrado.getCorreo() << endl;
+			fs << " Postal: " << alumnoMostrado.getPostal() << endl;
+			fs << " Nacimiento: " << alumnoMostrado.getNacimiento() << endl;
+			fs << " Curso: " << alumnoMostrado.getCurso() << endl;
+			fs << " Equipo: " << alumnoMostrado.getEquipo() << endl;
+			fs << " **Lider: " << alumnoMostrado.getLider() <<"**" << endl;
+			fs << "---" << endl;
+
+			fs.close();
+
+		}else{ 
+
+			return false;
+		}
+
+
+	}else{
+
+		return false;
+
+	}
+
 
 }

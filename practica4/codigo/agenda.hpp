@@ -6,6 +6,7 @@
 #include <cmath>
 #include <cassert>
 #include <string>
+#include <fstream>
 #include "persona.hpp"
 #include "alumno.hpp"
 #include "profesor.hpp"
@@ -50,7 +51,8 @@ class Agenda {
 
 		Alumno buscarAlumno(string nombre, string apellidos);
 
-		bool mostrarAlumno(Alumno aux);
+		bool mostrarAlumno(Alumno aux);	//Cual de las dos es correcta?
+		bool mostrarAlumno(string dni);
 
 		bool borrarAlumno(Alumno aux);
 
