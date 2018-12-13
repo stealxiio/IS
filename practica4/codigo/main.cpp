@@ -34,6 +34,7 @@ int main(){
 	string pass = "";
 
 	Alumno aux(2, 3, true, "31015701V", "12/12/1222", "mj", "JP", "correo", 657462286, 145002);
+	Alumno aux2(1, 4, true, "30990856N", "33/33/3333", "lr", "JAVI", "correoCasi", 650328761, 14014);
 	Agenda agenda;
 
 
@@ -205,7 +206,38 @@ int main(){
 					cout << BRED;
 					cout << "[8] Mostrar Alumno" << endl;
 					cout << RESET;
+<<<<<<< HEAD
 					cout << agenda.getLista().front().getCurso() << endl;
+=======
+					cout << aux.getDni() << endl;
+
+					//**************************************************
+					//Codigo para probar que va bien mostrar alumno
+
+					if (agenda.insertar(aux))
+					{
+						cout << "Alumno insertado satisfactoriamente.";
+					}
+					else{
+						cout << "El alumno no se ha podido insertar.";
+					}
+
+					if (agenda.insertar(aux2))
+					{
+						cout << "Alumno insertado satisfactoriamente.";
+					}
+					else{
+						cout << "El alumno no se ha podido insertar.";
+					}
+
+					cout << "prueba con buscaralumno pasandole alumno" << endl;
+					agenda.mostrarAlumno(aux);
+					cout << "prueba con buscaralumno pasandole DNI" << endl;
+					agenda.mostrarAlumno(aux2.getDni());
+
+					//************************************************** FUNCIONA
+
+>>>>>>> e886830fae80e4dbf1293590865f5a012937eb48
 					break;
 
 			case 9: 
