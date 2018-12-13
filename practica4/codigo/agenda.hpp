@@ -54,13 +54,13 @@ class Agenda {
 		bool mostrarAlumno(Alumno aux);	//Cual de las dos es correcta?
 		bool mostrarAlumno(string dni);
 
-		bool borrarAlumno(Alumno aux);
+		bool borrarAlumno(string dni);
 
 		//Podemos hacer los 3 ordenar en la misma funcion de ordenar 
 		//pasandole un int que diga el criterio con el que se quiere ordenar
 		void ordenar(int criterioOrdenacion, bool descendente);
 		
-		bool mofidicar(Alumno aux);
+		bool modificar(string dni);
 
 		void mostrarTodo();
 

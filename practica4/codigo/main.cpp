@@ -38,7 +38,6 @@ int main(){
 	Alumno aux2(1, 4, true, "30990856N", "33/33/3333", "lr", "JAVI", "correoCasi", 650328761, 14014);
 	Agenda agenda;
 	string nombreBackup;
-	string dni;
 
 	do{
 
@@ -130,6 +129,7 @@ int main(){
 					cout << BRED;
 					cout << "[4] Exportar backup" << endl;
 					cout << RESET;
+
 					cout << "Introduzca el nombre del fichero:";
 					cin >> nombreBackup;
 					if(agenda.exportarBackup(permiso, nombreBackup)){
@@ -139,6 +139,7 @@ int main(){
 						cout << "No tienes permiso." << endl;
 					}
 					cin.ignore();
+
 					break;
 
 
@@ -205,16 +206,48 @@ int main(){
 					break;
 
 			case 6:
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
-					cout << "[0] Fin del programa" << endl;
+					cout << "[6] Modificar Alumno." << endl;
 					cout << RESET;
+
+					//borrar los insertar
+					//agenda.insertar(aux);
+					//agenda.insertar(aux2);
+					//borrar insertar
+
+
+					cout << "Introduzca el dni del alumno que desea modificar" << endl;
+					cin >> dni;
+					if(agenda.modificar(dni)){
+						cout << "Se ha modificado con exito al alumno." << endl;
+					}else{
+						cout << "El alumno especificado no existe." << endl;
+					}
+
+
 					break;
 			case 7:
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
-					cout << "[0] Fin del programa" << endl;
+					cout << "[7] Borrar Alumno" << endl;
 					cout << RESET;
+
+					//borrar los insertar
+					//agenda.insertar(aux);
+					//agenda.insertar(aux2);
+					//borrar insertar
+
+
+					cout << "Introduzca el dni del alumno que desea borrar" << endl;
+					cin >> dni;
+					if(agenda.borrarAlumno(dni)){
+						cout << "Se ha borrado con exito al alumno." << endl;
+					}else{
+						cout << "El alumno especificado no existe." << endl;
+					}
+
+					//agenda.mostrarTodo();
 					break;
 
 
@@ -227,19 +260,23 @@ int main(){
 					cout << BIBLUE;
 					cout << "[8] Mostrar Alumno" << endl;
 					cout << RESET;
-					cout << "introduzca el dni del alumno que quiera mostrar:";
+
+					cout << "Introduzca el dni del alumno que quiera mostrar:";
 					cin >> dni;
-					agenda.mostrarAlumno(string dni);
-					
-					
+					agenda.mostrarAlumno(dni);					
 
 					break;
 
 			case 9: 
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
-					cout << "[0] Fin del programa" << endl;
+					cout << "[9] Mostrar Alumnos de un equipo" << endl;
 					cout << RESET;
+
+					cout << "Introduzca el equipo que quieres mostrar:";
+					cin >> equipo;
+					agenda.mostrarEquipo(equipo);
+
 					break;
 
 
@@ -248,6 +285,9 @@ int main(){
 					cout << BRED;
 					cout << "[10] Mostra todo" << endl;
 					cout << RESET;
+
+					//agenda.insertar(aux);
+					//agenda.insertar(aux2);
 
 					agenda.mostrarTodo();
 					break;
