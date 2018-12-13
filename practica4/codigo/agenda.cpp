@@ -2,7 +2,10 @@
 #include <cmath>
 #include <cassert>
 #include <string>
+#include <stdlib.h>
 #include <list>
+#include <ctime>
+#include <fstream>
 #include "persona.hpp"
 #include "alumno.hpp"
 #include "profesor.hpp"
@@ -273,3 +276,124 @@ Alumno Agenda::buscarAlumno(string dni){
 	return vacio;
 
 }
+
+
+
+
+bool Agenda::exportar(){
+	ofstream f("agenda.txt");
+	string lider = "no";
+
+	for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+	{
+		if (it->getLider()){
+			lider = "si";
+		}
+		
+		f << it->getCurso() << "-" << it->getEquipo() << "-" << lider.c_str() << "-" << it->getDni().c_str() << "-" << it->getNacimiento().c_str() << "-" << it->getApellidos().c_str() << "-" << it->getNombre().c_str() << "-" << it->getCorreo().c_str() << "-" << it->getTelefono() << "-" << it->getPostal() << endl;
+		lider = "no";
+		
+	}
+
+	f.close();
+	return true;
+}
+
+bool Agenda::importar(){
+	ifstream f("agenda.txt");
+	bool lider = false;
+	string cadena;
+	Alumno aux(0, 0, false, "0", "", "", "", "", 0, 0);
+
+	while(!f.eof()){
+
+		getline(f,cadena,'-');
+		aux.setCurso(atoi(cadena.c_str()));
+
+		getline(f,cadena,'-');
+		aux.setEquipo(atoi(cadena.c_str()));
+
+		getline(f,cadena,'-');
+		if (cadena=="si")
+		{
+			lider=true;
+		}
+		aux.setLider(lider);
+		lider=false;
+
+		getline(f,cadena,'-');
+		aux.setDni(cadena);
+
+		getline(f,cadena,'-');
+		aux.setNacimiento(cadena);
+
+		getline(f,cadena,'-');
+		aux.setApellidos(cadena);
+
+		getline(f,cadena,'-');
+		aux.setNombre(cadena);
+
+		getline(f,cadena,'-');
+		aux.setCorreo(cadena);
+
+		getline(f,cadena,'-');
+		aux.setTelefono(atoi(cadena.c_str()));
+
+		getline(f,cadena);
+		aux.setPostal(atoi(cadena.c_str()));
+
+		insertar(aux);
+
+	}
+
+	_listaAlumnos.pop_back();
+
+	f.close();
+	return true;
+}
+
+
+bool Agenda::exportarBackup(bool permiso){
+
+	ofstream f(name, ios::binary);
+
+	string lider = "no";
+	char name[80]
+	strcat (str,"strings ")
+
+	for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+	{
+		if (it->getLider()){
+			lider = "si";
+		}
+		
+
+
+		lider = "no";
+		
+	}
+
+	f.close();
+	return true;
+
+
+
+}
+
+
+void Agenda::mostrarTodo(){
+
+	list<Alumno>::iterator it;
+	it = _listaAlumnos.begin(); 
+
+	for (int i =0; i < getNumeroAlumnos() ; i++)
+	{
+
+		cout << it->getCurso() << " " << it->getDni() << " " << it->getNombre() << " " << it->getApellidos() << " " << it->getPostal() << endl;
+		it++;
+
+	}
+
+
+}
+

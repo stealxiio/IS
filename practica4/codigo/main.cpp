@@ -87,6 +87,10 @@ int main(){
 					cout << BRED;
 					cout << "[1] Cargar desde fichero" << endl;
 					cout << RESET;
+					if(agenda.importar()){
+						cout << "fichero cargado con exito." << endl;
+
+					}
 					break;
 
 			
@@ -95,6 +99,11 @@ int main(){
 					cout << BRED;
 					cout << "[2] Grabar fichero" << endl;
 					cout << RESET;
+					if(agenda.exportar()){
+						cout << "fichero grabado con exito." << endl;
+
+					}
+
 					break;
 
 			case 3: 
@@ -124,23 +133,23 @@ int main(){
 					cout << RESET;
 					//Solicitud de datos
 
-					cout << "Nombre del alumno"<< endl;
-					cin >> nombre;
-					cout << "Apellidos del alumno"<< endl;
-					cin >> apellidos;
-					cout << "DNI del alumno"<< endl;
+					cout << "Nombre del alumno: "<< endl;
+					getline(cin, nombre);
+					cout << "Apellidos del alumno:"<< endl;
+					getline(cin, apellidos);
+					cout << "DNI del alumno:"<< endl;
 					cin >> dni;
-					cout << "Telefono del alumno"<< endl;
+					cout << "Telefono del alumno:"<< endl;
 					cin >> telefono;
-					cout << "E-mail del alumno"<< endl;
+					cout << "E-mail del alumno:"<< endl;
 					cin >> correo;
-					cout << "Codigo postal del alumno"<< endl;
+					cout << "Codigo postal del alumno:"<< endl;
 					cin >> postal;
-					cout << "Curso mas alto matriculado del alumno"<< endl;
+					cout << "Curso mas alto matriculado del alumno:"<< endl;
 					cin >> curso;
-					cout << "Fecha de nacimiento del alumno"<< endl;
+					cout << "Fecha de nacimiento del alumno:"<< endl;
 					cin >> nacimiento;
-					cout << "Equipo del alumno"<< endl;
+					cout << "Equipo del alumno:"<< endl;
 					cin >> equipo;
 					cout << "¿Es lider? (Y/N)"<< endl;
 					cin >> lid;
@@ -162,11 +171,13 @@ int main(){
 
 					if (agenda.insertar(aux))
 					{
-						cout << "Alumno insertado satisfactoriamente.";
+						cout << "Alumno insertado satisfactoriamente. ";
 					}
 					else{
-						cout << "El alumno no se ha podido insertar.";
+						cout << "El alumno no se ha podido insertar. ";
 					}
+
+					cout << agenda.getNumeroAlumnos() << endl;
 					cin.ignore();
 
 					break;
@@ -189,13 +200,12 @@ int main(){
 			/////////////////////////////////////////////////////////////////////////////////////////
 			/////////////////////////////////////////////////////////////////////////////////////////
 
-
 			case 8: 
 					PLACE(1,1);
 					cout << BRED;
 					cout << "[8] Mostrar Alumno" << endl;
 					cout << RESET;
-					cout << aux.getDni() << endl;
+					cout << agenda.getLista().front().getCurso() << endl;
 					break;
 
 			case 9: 
@@ -206,6 +216,14 @@ int main(){
 					break;
 
 
+			case 10: 
+					PLACE(1,1);
+					cout << BRED;
+					cout << "[10] Mostra todo" << endl;
+					cout << RESET;
+
+					agenda.mostrarTodo();
+					break;
 
 
 

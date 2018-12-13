@@ -60,21 +60,21 @@ class Agenda {
 		
 		bool mofidicar(Alumno aux);
 
-		bool mostrarTodos();
+		void mostrarTodo();
 
 		bool mostrarEquipo(int equipo);
 
-		bool exportar(string nombreFichero);
+		bool exportar();
 
-		bool inportar(string nombreFichero);
+		bool importar();
 
-		bool login(Profesor profesor);
+		bool login(string id, string pass);
 
-		bool exportarBackup(string nombreFichero);
+		bool exportarBackup(bool permiso);
 
-		bool inportarBackup(string nombreFichero);
+		bool inportarBackup(bool permiso);
 
-		bool registrar(Profesor profesor);
+		bool registrar(string id, string pass, bool permiso);
 
 
 
