@@ -32,11 +32,13 @@ bool login(string id, string pass){
 int main(){
 	string id = "";
 	string pass = "";
+	bool permiso = true;
 
 	Alumno aux(2, 3, true, "31015701V", "12/12/1222", "mj", "JP", "correo", 657462286, 145002);
 	Alumno aux2(1, 4, true, "30990856N", "33/33/3333", "lr", "JAVI", "correoCasi", 650328761, 14014);
 	Agenda agenda;
-
+	string nombreBackup;
+	string dni;
 
 	do{
 
@@ -84,7 +86,7 @@ int main(){
 		   ///////////////////////////////////////////////////////////////////
 
 			case 1: 
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
 					cout << "[1] Cargar desde fichero" << endl;
 					cout << RESET;
@@ -96,7 +98,7 @@ int main(){
 
 			
 			case 2: 
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
 					cout << "[2] Grabar fichero" << endl;
 					cout << RESET;
@@ -108,16 +110,35 @@ int main(){
 					break;
 
 			case 3: 
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
 					cout << "[3] Importar backup" << endl;
 					cout << RESET;
+					if(agenda.inportarBackup(permiso, nombreBackup)){
+						cout << "Backup cargada con exito." << endl;
+
+					}else{
+						cout << "No tienes permiso." << endl;
+					}
+
+
+					cin.ignore();
 					break;
+
 			case 4: 
-					PLACE(25,1);
+					PLACE(1,1);
 					cout << BRED;
 					cout << "[4] Exportar backup" << endl;
 					cout << RESET;
+					cout << "Introduzca el nombre del fichero:";
+					cin >> nombreBackup;
+					if(agenda.exportarBackup(permiso, nombreBackup)){
+						cout << "Backup guardada con exito." << endl;
+
+					}else{
+						cout << "No tienes permiso." << endl;
+					}
+					cin.ignore();
 					break;
 
 
@@ -203,41 +224,15 @@ int main(){
 
 			case 8: 
 					PLACE(1,1);
-					cout << BRED;
+					cout << BIBLUE;
 					cout << "[8] Mostrar Alumno" << endl;
 					cout << RESET;
-<<<<<<< HEAD
-					cout << agenda.getLista().front().getCurso() << endl;
-=======
-					cout << aux.getDni() << endl;
+					cout << "introduzca el dni del alumno que quiera mostrar:";
+					cin >> dni;
+					agenda.mostrarAlumno(string dni);
+					
+					
 
-					//**************************************************
-					//Codigo para probar que va bien mostrar alumno
-
-					if (agenda.insertar(aux))
-					{
-						cout << "Alumno insertado satisfactoriamente.";
-					}
-					else{
-						cout << "El alumno no se ha podido insertar.";
-					}
-
-					if (agenda.insertar(aux2))
-					{
-						cout << "Alumno insertado satisfactoriamente.";
-					}
-					else{
-						cout << "El alumno no se ha podido insertar.";
-					}
-
-					cout << "prueba con buscaralumno pasandole alumno" << endl;
-					agenda.mostrarAlumno(aux);
-					cout << "prueba con buscaralumno pasandole DNI" << endl;
-					agenda.mostrarAlumno(aux2.getDni());
-
-					//************************************************** FUNCIONA
-
->>>>>>> e886830fae80e4dbf1293590865f5a012937eb48
 					break;
 
 			case 9: 

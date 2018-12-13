@@ -3,14 +3,15 @@
 #include <cassert>
 #include <string>
 #include <stdlib.h>
+#include <sys/stat.h>
 #include <list>
-<<<<<<< HEAD
+
 #include <ctime>
 #include <fstream>
-=======
+
 #include <fstream>
 #include <cstring>
->>>>>>> e886830fae80e4dbf1293590865f5a012937eb48
+
 #include "persona.hpp"
 #include "alumno.hpp"
 #include "profesor.hpp"
@@ -281,9 +282,6 @@ Alumno Agenda::buscarAlumno(string dni){
 
 }
 
-<<<<<<< HEAD
-
-
 
 bool Agenda::exportar(){
 	ofstream f("agenda.txt");
@@ -358,31 +356,44 @@ bool Agenda::importar(){
 }
 
 
-bool Agenda::exportarBackup(bool permiso){
+bool Agenda::exportarBackup(bool permiso, string name){
 
-	ofstream f(name, ios::binary);
+	if (permiso==false)
+	{
+		return false;
+	}
 
-	string lider = "no";
-	char name[80]
-	strcat (str,"strings ")
-
+	ofstream fb(name.c_str(),  ios::out | ios::binary);
+	fb.seekp (0);
+	
 	for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
 	{
-		if (it->getLider()){
-			lider = "si";
-		}
 		
-
-
-		lider = "no";
+		fb.write((char*)&(*it), sizeof (Alumno));
 		
 	}
 
-	f.close();
+	fb.close();
 	return true;
 
+}
+
+bool Agenda::inportarBackup(bool permiso, string name){
+	if (permiso==false)
+	{
+		return false;
+	}
+	Alumno *aux = new Alumno;
+	ifstream fb(name.c_str(),  ios::in | ios::binary);
+	fb.seekg (0);
+
+	while (fb.read((char*)aux, sizeof (Alumno))) {
+        insertar(*aux);
+    }
 
 
+	fb.close();
+	return true;
 }
 
 
@@ -396,7 +407,11 @@ void Agenda::mostrarTodo(){
 
 		cout << it->getCurso() << " " << it->getDni() << " " << it->getNombre() << " " << it->getApellidos() << " " << it->getPostal() << endl;
 		it++;
-=======
+
+	}
+
+}
+
 //Pues hay un problema, no se si mostrar alumno se le tiene que pasar un alumno o un dni asi que hago ambas y se borra la que no sea
 
 bool Agenda::mostrarAlumno(Alumno aux){
@@ -483,14 +498,7 @@ bool Agenda::mostrarAlumno(string dni){
 	}else{
 
 		return false;
->>>>>>> e886830fae80e4dbf1293590865f5a012937eb48
 
 	}
 
-
-<<<<<<< HEAD
 }
-
-=======
-}
->>>>>>> e886830fae80e4dbf1293590865f5a012937eb48

@@ -72,9 +72,9 @@ class Agenda {
 
 		bool login(string id, string pass);
 
-		bool exportarBackup(bool permiso);
+		bool exportarBackup(bool permiso, string name);
 
-		bool inportarBackup(bool permiso);
+		bool inportarBackup(bool permiso, string name);
 
 		bool registrar(string id, string pass, bool permiso);
 

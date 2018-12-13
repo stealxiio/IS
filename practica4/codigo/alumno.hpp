@@ -37,6 +37,9 @@ class Alumno : public Persona {
 
 		}
 
+		inline Alumno(){
+			
+		}
 
 		//Gets:
 		inline int getCurso() const{
