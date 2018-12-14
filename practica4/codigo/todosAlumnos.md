@@ -147,3 +147,27 @@
  **Lider: 0**
 ---
 ---
+---
+---
+ Nombre: pepe
+ Apellidos: lara
+ DNI: 18283a
+ Telefono: 12412
+ Correo: jnhasj
+ Postal: 12345
+ Nacimiento: 1235
+ Curso: 1
+ Equipo: 23
+ **Lider: 1**
+---
+ Nombre: 652
+ Apellidos: 523
+ DNI: 654
+ Telefono: 233
+ Correo: 45
+ Postal: 4
+ Nacimiento: 4
+ Curso: 8
+ Equipo: 345
+ **Lider: 1**
+---

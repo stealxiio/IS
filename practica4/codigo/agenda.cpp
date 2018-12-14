@@ -17,6 +17,22 @@
 #include "profesor.hpp"
 #include "agenda.hpp"
 
+struct AlumnoAuxiliar{
+
+
+	int Curso;
+	int Equipo;
+	bool Lider;
+	char Dni[100];
+	char Nacimiento[100];
+	char Apellidos[100];
+	char Nombre[100];
+	char Correo[100];
+	int Telefono;
+	int Postal;
+
+};
+
 
 using namespace std;
 
@@ -356,6 +372,7 @@ bool Agenda::importar(){
 }
 
 
+
 bool Agenda::exportarBackup(bool permiso, string name){
 
 	if (permiso==false)
@@ -363,13 +380,25 @@ bool Agenda::exportarBackup(bool permiso, string name){
 		return false;
 	}
 
-	ofstream fb(name.c_str(),  ios::out | ios::binary);
+	fstream fb(name.c_str(),  ios::app | ios::out | ios::in |ios::binary);
 	fb.seekp (0);
+	AlumnoAuxiliar Aux;
 	
 	for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
 	{
+
+		Aux.Curso = it->getCurso();
+		Aux.Equipo = it->getEquipo();
+		Aux.Lider = it->getLider();
+		Aux.Telefono = it->getTelefono();
+		Aux.Postal = it->getPostal();
+		strcpy(Aux.Nombre,it->getNombre().c_str());
+		strcpy(Aux.Apellidos,it->getApellidos().c_str());
+		strcpy(Aux.Nacimiento,it->getNacimiento().c_str());
+		strcpy(Aux.Dni,it->getDni().c_str());
+		strcpy(Aux.Correo,it->getCorreo().c_str());
 		
-		fb.write((char*)&(*it), sizeof (Alumno));
+		fb.write((char*)&(Aux), sizeof (Aux));
 		
 	}
 
@@ -379,23 +408,81 @@ bool Agenda::exportarBackup(bool permiso, string name){
 }
 
 bool Agenda::inportarBackup(bool permiso, string name){
+
 	if (permiso==false)
 	{
 		return false;
 	}
-	Alumno aux;
-	ifstream fb(name.c_str(),  ios::in | ios::binary);
-	fb.seekg (0);
 
-	fb.read((char*)&aux, sizeof (Alumno));
-    insertar(aux);
-    
+	Alumno auxAlumno;
+	fstream fb(name.c_str(), ios::app | ios::in | ios::out | ios::binary);
+	fb.seekp (0);
+	AlumnoAuxiliar Aux;
+
+
+	fb.read((char*)&Aux, sizeof (Aux));
+
+    while(!fb.eof()){
+
+    	auxAlumno.setCurso(Aux.Curso);
+		auxAlumno.setEquipo(Aux.Equipo);
+		auxAlumno.setLider(Aux.Lider);
+		auxAlumno.setTelefono(Aux.Telefono);
+		auxAlumno.setPostal(Aux.Postal);
+		auxAlumno.setNombre(Aux.Nombre);
+		auxAlumno.setApellidos(Aux.Apellidos);
+		auxAlumno.setNacimiento(Aux.Nacimiento);
+		auxAlumno.setDni(Aux.Dni);
+		auxAlumno.setCorreo(Aux.Correo);
+
+
+
+    	insertar(auxAlumno);
+    	fb.read((char*)&Aux, sizeof (Aux));
+		
+	}
 
 
 	fb.close();
 	return true;
 }
+/*
+bool login(Profesor profesor){
 
+	profesorAuxiliar Aux;
+
+	
+	fstream fb("registro.bin", ios::app | ios::in | ios::out | ios::binary);
+
+	fb.seekg (0);
+
+	fb.read((char*)&Aux, sizeof(profesorAuxiliar));
+
+	while(!fb.eof()){
+
+
+		if (profesor.getId().compare(Aux.id)== 0 && profesor.getPass().compare(Aux.pass)==0 )
+		{
+			cout << "Acceso permitido.";
+			
+			cin.ignore();
+
+			fb.close();
+			return true;
+		}
+
+		fb.read((char*)&Aux, sizeof(profesorAuxiliar));
+
+	}
+
+
+	fb.close();
+	
+	return false;
+
+}
+
+*/
 
 void Agenda::mostrarTodo(){
 
