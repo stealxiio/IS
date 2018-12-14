@@ -399,17 +399,161 @@ bool Agenda::inportarBackup(bool permiso, string name){
 
 void Agenda::mostrarTodo(){
 
-	list<Alumno>::iterator it;
-	it = _listaAlumnos.begin(); 
 
-	for (int i =0; i < getNumeroAlumnos() ; i++)
-	{
+	ofstream fs;
+	int opcion =2;
 
-		cout << it->getCurso() << " " << it->getDni() << " " << it->getNombre() << " " << it->getApellidos() << " " << it->getPostal() << endl;
-		it++;
+
+	do{
+
+		cout << "En que formato desea el fichero: markdown (0) o HTML (1)" << endl;
+		cin >>opcion;
+
+	}while ((opcion != 0) && (opcion != 1));
+
+	if(opcion == 0){
+		fs.open("todosAlumnos.md",std::ofstream::out | std::ofstream::app);
+
+		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+		{
+
+			fs << "---" << endl;
+			fs << " Nombre: " << it->getNombre() << endl;
+			fs << " Apellidos: " << it->getApellidos() << endl;
+			fs << " DNI: " << it->getDni() << endl;
+			fs << " Telefono: " << it->getTelefono() << endl;
+			fs << " Correo: " << it->getCorreo() << endl;
+			fs << " Postal: " << it->getPostal() << endl;
+			fs << " Nacimiento: " << it->getNacimiento() << endl;
+			fs << " Curso: " << it->getCurso() << endl;
+			fs << " Equipo: " << it->getEquipo() << endl;
+			fs << " **Lider: " << it->getLider() <<"**" << endl;
+
+		}
+		fs << "---" << endl;
+	}else if(opcion == 1){
+
+		fs.open("todosAlumnos.html",std::ofstream::out | std::ofstream::app);
+
+		fs << "<!DOCTYPE html>" << endl;
+		fs << "<html>" << endl;
+		fs << "<body>" << endl;
+		fs << "<h2> Tabla Con todos los alumnos de la agenda </h2>" << endl;
+		fs << "<table style=\"width:100%%\">" << endl;
+		fs << "<tr>" << endl;
+		fs << "\t</th>Nombre</th>" << endl;
+		fs << "\t</th>Apellidos</th>" << endl;
+		fs << "\t</th>DNI</th>" << endl;
+		fs << "\t</th>Telefono</th>" << endl;
+		fs << "\t</th>Correo</th>" << endl;
+		fs << "\t</th>Postal</th>" << endl;
+		fs << "\t</th>Nacimiento</th>" << endl;
+		fs << "\t</th>Curso</th>" << endl;
+		fs << "\t</th>Equipo</th>" << endl;
+		fs << "\t</th>Lider</th>" << endl;
+		fs << "</tr>" << endl;
+
+		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+		{
+			fs << "<tr>" << endl;
+			fs << "\t<td>" << it->getNombre() << "</td>" << endl;
+			fs << "\t<td>" << it->getApellidos() << "</td>" << endl;
+			fs << "\t<td>" << it->getDni() << "</td>" << endl;
+			fs << "\t<td>" << it->getTelefono() << "</td>" << endl;
+			fs << "\t<td>" << it->getCorreo() << "</td>" << endl;
+			fs << "\t<td>" << it->getPostal() << "</td>" << endl;
+			fs << "\t<td>" << it->getNacimiento() << "</td>" << endl;
+			fs << "\t<td>" << it->getCurso() << "</td>" << endl;
+			fs << "\t<td>" << it->getEquipo() << "</td>" << endl;
+			fs << "</tr>" << endl;
+
+
+		}
+			fs << "</table>" << endl;
+			fs << "</body>" << endl;
+			fs << "</html>" << endl;
 
 	}
+}
 
+bool Agenda::mostrarEquipo(int equipo){
+
+	ofstream fs;
+	int opcion =2;
+
+	do{
+
+		cout << "En que formato desea el fichero: markdown (0) o HTML (1)" << endl;
+		cin >>opcion;
+
+	}while ((opcion != 0) && (opcion != 1));
+
+	if(opcion == 0){
+		fs.open("mostrarEquipo.md",std::ofstream::out | std::ofstream::app);
+
+		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+		{
+
+			if(it->getEquipo() == equipo){
+				fs << "---" << endl;
+				fs << " Nombre: " << it->getNombre() << endl;
+				fs << " Apellidos: " << it->getApellidos() << endl;
+				fs << " DNI: " << it->getDni() << endl;
+				fs << " Telefono: " << it->getTelefono() << endl;
+				fs << " Correo: " << it->getCorreo() << endl;
+				fs << " Postal: " << it->getPostal() << endl;
+				fs << " Nacimiento: " << it->getNacimiento() << endl;
+				fs << " Curso: " << it->getCurso() << endl;
+				fs << " Equipo: " << it->getEquipo() << endl;
+				fs << " **Lider: " << it->getLider() <<"**" << endl;
+			}
+
+		}
+		fs << "---" << endl;
+	}else if(opcion == 1){
+
+		fs.open("todosAlumnos.html",std::ofstream::out | std::ofstream::app);
+
+		fs << "<!DOCTYPE html>" << endl;
+		fs << "<html>" << endl;
+		fs << "<body>" << endl;
+		fs << "<h2> Tabla Con todos los alumnos de la agenda </h2>" << endl;
+		fs << "<table style=\"width:100%%\">" << endl;
+		fs << "<tr>" << endl;
+		fs << "\t</th>Nombre</th>" << endl;
+		fs << "\t</th>Apellidos</th>" << endl;
+		fs << "\t</th>DNI</th>" << endl;
+		fs << "\t</th>Telefono</th>" << endl;
+		fs << "\t</th>Correo</th>" << endl;
+		fs << "\t</th>Postal</th>" << endl;
+		fs << "\t</th>Nacimiento</th>" << endl;
+		fs << "\t</th>Curso</th>" << endl;
+		fs << "\t</th>Equipo</th>" << endl;
+		fs << "\t</th>Lider</th>" << endl;
+		fs << "</tr>" << endl;
+
+		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+		{
+
+			if(it->getEquipo() == equipo){
+				fs << "<tr>" << endl;
+				fs << "\t<td>" << it->getNombre() << "</td>" << endl;
+				fs << "\t<td>" << it->getApellidos() << "</td>" << endl;
+				fs << "\t<td>" << it->getDni() << "</td>" << endl;
+				fs << "\t<td>" << it->getTelefono() << "</td>" << endl;
+				fs << "\t<td>" << it->getCorreo() << "</td>" << endl;
+				fs << "\t<td>" << it->getPostal() << "</td>" << endl;
+				fs << "\t<td>" << it->getNacimiento() << "</td>" << endl;
+				fs << "\t<td>" << it->getCurso() << "</td>" << endl;
+				fs << "\t<td>" << it->getEquipo() << "</td>" << endl;
+				fs << "</tr>" << endl;
+			}
+
+		}
+			fs << "</table>" << endl;
+			fs << "</body>" << endl;
+			fs << "</html>" << endl;
+	}
 }
 
 //Pues hay un problema, no se si mostrar alumno se le tiene que pasar un alumno o un dni asi que hago ambas y se borra la que no sea
@@ -500,5 +644,105 @@ bool Agenda::mostrarAlumno(string dni){
 		return false;
 
 	}
+
+}
+
+bool Agenda::modificar(string dni){
+
+	Alumno modificar;
+
+	string nombre, apellidos, correo, nacimiento, lid;
+	int telefono, postal, curso, equipo;
+	bool lider;
+
+	modificar.setDni(dni);
+
+	if(esAlumno(modificar)){
+
+
+		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+		{
+
+			if(it->getDni() == modificar.getDni()){
+
+
+				cout << "Nombre del alumno: "<< endl;
+				getline(cin, nombre);
+				cout << "Apellidos del alumno:"<< endl;
+				getline(cin, apellidos);
+				cout << "DNI del alumno:"<< endl;
+				cin >> dni;
+				cout << "Telefono del alumno:"<< endl;
+				cin >> telefono;
+				cout << "E-mail del alumno:"<< endl;
+				cin >> correo;
+				cout << "Codigo postal del alumno:"<< endl;
+				cin >> postal;
+				cout << "Curso mas alto matriculado del alumno:"<< endl;
+				cin >> curso;
+				cout << "Fecha de nacimiento del alumno:"<< endl;
+				cin >> nacimiento;
+				cout << "Equipo del alumno:"<< endl;
+				cin >> equipo;
+				cout << "¿Es lider? (Y/N)"<< endl;
+				cin >> lid;
+				if (lid=="Y")
+				{
+					lider=true;
+				}
+									
+				it->setCurso(curso);	
+				it->setEquipo(equipo);
+				it->setLider(lider);
+				it->setDni(dni);
+				it->setNacimiento(nacimiento);
+				it->setApellidos(apellidos);
+				it->setNombre(nombre);
+				it->setCorreo(correo);
+				it->setTelefono(telefono);
+				it->setPostal(postal);
+
+					//cambiar la opcion de buscar para que devuelva puntero y sea mas capsulable
+			}
+		}
+
+
+	}else{
+
+		return false;
+	}
+
+}
+
+
+
+bool Agenda::borrarAlumno(string dni){
+
+
+	Alumno borrado;
+
+	borrado.setDni(dni);
+
+	if(esAlumno(borrado)){
+
+
+		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
+		{
+
+			if(it->getDni() == borrado.getDni()){
+
+				it = _listaAlumnos.erase(it);
+
+			}
+		}
+		return true;
+
+
+	}else{
+
+		return false;
+	}
+
+
 
 }
