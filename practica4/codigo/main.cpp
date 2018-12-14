@@ -38,7 +38,7 @@ int main(){
 	Alumno aux2(1, 4, true, "30990856N", "33/33/3333", "lr", "JAVI", "correoCasi", 650328761, 14014);
 	Agenda agenda;
 	string nombreBackup;
-	string dni;
+	string dnib;
 
 	do{
 
@@ -114,13 +114,14 @@ int main(){
 					cout << BRED;
 					cout << "[3] Importar backup" << endl;
 					cout << RESET;
+					cout << "Introduzca el nombre del fichero: ";
+					cin >> nombreBackup;
 					if(agenda.inportarBackup(permiso, nombreBackup)){
 						cout << "Backup cargada con exito." << endl;
 
 					}else{
 						cout << "No tienes permiso." << endl;
 					}
-
 
 					cin.ignore();
 					break;
@@ -228,10 +229,10 @@ int main(){
 					cout << "[8] Mostrar Alumno" << endl;
 					cout << RESET;
 					cout << "introduzca el dni del alumno que quiera mostrar:";
-					cin >> dni;
-					agenda.mostrarAlumno(string dni);
+					cin >> dnib;
+					agenda.mostrarAlumno(dnib);
 					
-					
+
 
 					break;
 
