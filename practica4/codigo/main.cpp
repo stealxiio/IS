@@ -1,7 +1,16 @@
 #include <iostream>
+#include <cmath>
+#include <cassert>
 #include <string>
-#include <cstdlib>
+#include <stdlib.h>
+#include <sys/stat.h>
 #include <list>
+
+#include <ctime>
+#include <fstream>
+
+#include <fstream>
+#include <cstring>
 #include "menu.hpp"
 #include "macros.hpp"
 #include "persona.hpp"
@@ -13,26 +22,68 @@
 
 using namespace std;
 
-bool login(string id, string pass){
-	if ((id=="x") &&(pass=="123"))
-	{
-		cout << BRED;
-		cout << "El ID o la contraseña no son correctos";
-		cout << RESET;
-		cin.ignore();
+bool login(string id, string pass, int *rol){
+	
+	char *auxid= new char[50];
+	char *auxpass= new char[50];
+	int *auxrol = new int;
+	
+	fstream fb("registro.bin", ios::in | ios::out | ios::binary);
+	fb.seekg (0);
 
-		cout << CLEAR_SCREEN;
+	while(!fb.eof()){
+		fb.read ((char*)auxid, sizeof(char) *50);
+		fb.read ((char*)auxpass, sizeof(char) *50);
+		fb.read ((char*)auxrol, sizeof (int));
 
-		return false;
+		if ((id.c_str()==auxid)&&(pass.c_str()==auxpass))
+		{
+			cout << "Acceso permitido.";
+			
+			cin.ignore();
+
+			fb.close();
+			return true;
+		}
 	}
-	return true;
+
+
+	fb.close();
+	
+	return false;
 
 }
+
+bool registrar(string id, string pass, int rol){
+
+	fstream fb("registro.bin", ios::app | ios::in | ios::out | ios::binary);
+	fb.seekp (ios_base::end);
+
+	char idaux[50];
+	char passaux[50]; 
+
+	
+	strcpy(idaux,id.c_str());
+
+	strcpy(passaux,pass.c_str());
+
+	fb.write((char*)&(idaux), sizeof (char)*50);
+	fb.write((char*)&(passaux), sizeof (char)*50);
+	fb.write((char*)&(rol), sizeof (int));
+
+	fb.close();
+
+}
+
 
 int main(){
 	string id = "";
 	string pass = "";
+	int rol = 1;
 	bool permiso = true;
+	Profesor prof;
+	string newid, newpass;
+	int newrol;
 
 	Alumno aux(2, 3, true, "31015701V", "12/12/1222", "mj", "JP", "correo", 657462286, 145002);
 	Alumno aux2(1, 4, true, "30990856N", "33/33/3333", "lr", "JAVI", "correoCasi", 650328761, 14014);
@@ -57,7 +108,7 @@ int main(){
 		cin>> pass;
    		
 		cin.ignore();
-	}while(login(id, pass)==false);
+	}while(login(id, pass, &rol)==false);
 
 
 	
@@ -80,7 +131,7 @@ int main(){
 			case 0: 
 					PLACE(25,1);
 					cout << BRED;
-					cout << "[0] Fin del programa" << endl;
+					cout << "[0] Fin del programa." << endl;
 					cout << RESET;
 			break;
 
@@ -88,8 +139,8 @@ int main(){
 
 			case 1: 
 					PLACE(1,1);
-					cout << BRED;
-					cout << "[1] Cargar desde fichero" << endl;
+					cout << BIBLUE;
+					cout << "[1] Cargar desde fichero." << endl;
 					cout << RESET;
 					if(agenda.importar()){
 						cout << "fichero cargado con exito." << endl;
@@ -100,8 +151,8 @@ int main(){
 			
 			case 2: 
 					PLACE(1,1);
-					cout << BRED;
-					cout << "[2] Grabar fichero" << endl;
+					cout << BIBLUE;
+					cout << "[2] Grabar fichero." << endl;
 					cout << RESET;
 					if(agenda.exportar()){
 						cout << "fichero grabado con exito." << endl;
@@ -112,8 +163,8 @@ int main(){
 
 			case 3: 
 					PLACE(1,1);
-					cout << BRED;
-					cout << "[3] Importar backup" << endl;
+					cout << BIBLUE;
+					cout << "[3] Importar backup." << endl;
 					cout << RESET;
 					cout << "Introduzca el nombre del fichero: ";
 					cin >> nombreBackup;
@@ -129,7 +180,7 @@ int main(){
 
 			case 4: 
 					PLACE(1,1);
-					cout << BRED;
+					cout << BIBLUE;
 					cout << "[4] Exportar backup" << endl;
 					cout << RESET;
 
@@ -155,7 +206,7 @@ int main(){
 
 					PLACE(1,1);
 					cout << BIBLUE;
-					cout << "[5] Insertar Alumno" << endl;
+					cout << "[5] Insertar Alumno." << endl;
 					cout << RESET;
 					//Solicitud de datos
 
@@ -210,7 +261,7 @@ int main(){
 
 			case 6:
 					PLACE(1,1);
-					cout << BRED;
+					cout << BIBLUE;
 					cout << "[6] Modificar Alumno." << endl;
 					cout << RESET;
 
@@ -232,8 +283,8 @@ int main(){
 					break;
 			case 7:
 					PLACE(1,1);
-					cout << BRED;
-					cout << "[7] Borrar Alumno" << endl;
+					cout << BIBLUE;
+					cout << "[7] Borrar Alumno." << endl;
 					cout << RESET;
 
 					//borrar los insertar
@@ -261,7 +312,7 @@ int main(){
 			case 8: 
 					PLACE(1,1);
 					cout << BIBLUE;
-					cout << "[8] Mostrar Alumno" << endl;
+					cout << "[8] Mostrar Alumno." << endl;
 					cout << RESET;
 					cout << "introduzca el dni del alumno que quiera mostrar:";
 					cin >> dnib;
@@ -273,8 +324,8 @@ int main(){
 
 			case 9: 
 					PLACE(1,1);
-					cout << BRED;
-					cout << "[9] Mostrar Alumnos de un equipo" << endl;
+					cout << BIBLUE;
+					cout << "[9] Mostrar Alumnos de un equipo." << endl;
 					cout << RESET;
 
 					cout << "Introduzca el equipo que quieres mostrar:";
@@ -286,14 +337,33 @@ int main(){
 
 			case 10: 
 					PLACE(1,1);
-					cout << BRED;
-					cout << "[10] Mostra todo" << endl;
+					cout << BIBLUE;
+					cout << "[10] Mostra todo." << endl;
 					cout << RESET;
 
 					//agenda.insertar(aux);
 					//agenda.insertar(aux2);
 
 					agenda.mostrarTodo();
+					break;
+
+			case 11: 
+					PLACE(1,1);
+					cout << BIBLUE;
+					cout << "[11] Resgistrar Profesor." << endl;
+					cout << RESET;
+
+					cout << "Introduzca la ID: ";
+					cin >> newid;
+					cout << "Introduzca el rol (0 Jefe de departamento / 1 subordinado): ";
+					cin >> newrol;
+					cout << "Introduzca la contraseña: ";
+					cin >> newpass;
+
+					if(registrar(newid, newpass, newrol)){
+						cout << "Profesor registrado con exito." << endl;
+						cin.ignore();
+					}
 					break;
 
 
