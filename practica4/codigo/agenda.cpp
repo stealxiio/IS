@@ -383,13 +383,13 @@ bool Agenda::inportarBackup(bool permiso, string name){
 	{
 		return false;
 	}
-	Alumno *aux = new Alumno;
+	Alumno aux;
 	ifstream fb(name.c_str(),  ios::in | ios::binary);
 	fb.seekg (0);
 
-	while (fb.read((char*)aux, sizeof (Alumno))) {
-        insertar(*aux);
-    }
+	fb.read((char*)&aux, sizeof (Alumno));
+    insertar(aux);
+    
 
 
 	fb.close();
