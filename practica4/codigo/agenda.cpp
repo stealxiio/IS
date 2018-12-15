@@ -402,7 +402,7 @@ void Agenda::mostrarTodo(){
 		cout << "¿Según que parámetros desea que se muetre la lista?" << endl;
 		cout << " 1 -- Alfabeticamente" << endl << " 2 -- Segun Curso matriculado" << endl << " 3 -- segun DNI" << endl;
 		cin>>criterio;
-	while( criterio < 0 || criterio > 3);
+	}while( criterio < 0 || criterio > 3);
 
 	do{
 		cout << "¿Desea mostrar la agenda de forma ascendente? (Y/N)" << endl;
