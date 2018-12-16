@@ -17,8 +17,27 @@
 #include "profesor.hpp"
 #include "agenda.hpp"
 
+struct AlumnoAuxiliar{
+
+
+	int Curso;
+	int Equipo;
+	bool Lider;
+	char Dni[100];
+	char Nacimiento[100];
+	char Apellidos[100];
+	char Nombre[100];
+	char Correo[100];
+	int Telefono;
+	int Postal;
+
+};
+
 
 using namespace std;
+
+
+///////////////////// METODOS DE ORDENACION /////////////////////////////////////////////////
 
 bool ascendenteAlfabeticamente(Alumno alumno1, Alumno alumno2){
 
@@ -40,7 +59,6 @@ bool ascendenteAlfabeticamente(Alumno alumno1, Alumno alumno2){
 	return ( alumno1.getNombre().length() < alumno2.getNombre().length() );
 
 }
-
 
 bool descendenteAlfabeticamente(Alumno alumno1, Alumno alumno2){
 
@@ -97,7 +115,6 @@ bool ascendenteDNI(Alumno alumno1, Alumno alumno2){
 
 }
 
-
 bool descendenteDNI(Alumno alumno1, Alumno alumno2){
 
 	unsigned int i=0;
@@ -119,83 +136,21 @@ bool descendenteDNI(Alumno alumno1, Alumno alumno2){
 
 }
 
+///////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
-//Si es la interfaz la que se relaciona con el profesor 
-//entonces no es necesaria esta funcion de abajo
-//La dejo comentada por si podemos reclicar algo de ella
-/*
-void Agenda::insertar(){
-
-	bool encontrado;
-	string nombre, apellidos, dni, correo, nacimiento;
-	int telefono, postal, curso, equipo;
-	bool lider;
-
-	//Solicitud de datos
-	cout << "Nombre del alumno"<< endl;
-	cin >> nombre;
-	cout << "Apellidos del alumno"<< endl;
-	cin >> apellidos;
-	cout << "DNI del alumno"<< endl;
-	cin >> dni;
-	cout << "Telefono del alumno"<< endl;
-	cin >> telefono;
-	cout << "E-mail del alumno"<< endl;
-	cin >> correo;
-	cout << "Direccion postal del alumno"<< endl;
-	cin >> postal;
-	cout << "Curso mas alto matriculado del alumno"<< endl;
-	cin >> curso;
-	cout << "Fecha de nacimiento del alumno"<< endl;
-	cin >> nacimiento;
-	cout << "Equipo del alumno"<< endl;
-	cin >> equipo;
-	cout << "¿Es lider?"<< endl;
-	cin >> lider;
-
-	//Introducir valores en el orden correcto, creo que es:
-	Alumno aux(curso, equipo, lider, dni, nacimiento, apellidos, nombre, correo, telefono, postal);
-
-	//Busqueda alumno
-	encontrado = BuscarAlumno(aux);
-
-	if(encontrado){
-
-		//Alumno Existe
-		cout << "El alumno ya existe en la agenda" << endl;
-
-	}else{
-
-		//Alumno No Existe
-		lista.push_back(aux);
-		//Se ordena despues de insertar?
-		//lista.sort(compare);	//Compare es una funcion auxiliar tipo bool que indica la ordenacion de elementos ( se debe de codificar )
-
-	}
-
-}*/
-
-
-//Sobrecarga de la funcion insertar usada en la carga de datos desde un fichero.
 bool Agenda::insertar(Alumno aux){
 
 
 	if(esAlumno(aux)){
 
-		//Alumno Existe
-		//cout << "El alumno ya existe en la agenda" << endl;
 		return false;
 
 	}else{
 
-		//Alumno No Existe
 		_listaAlumnos.push_back(aux);
-		//Se ordena despues de insertar?
-		//ordenar(criterio, descendente?)	//Compare es una funcion auxiliar tipo bool que indica la ordenacion de elementos ( se debe de codificar )
+		
 		return true;
-
 	}
 
 }
@@ -228,8 +183,6 @@ void Agenda::ordenar(int criterioOrdenacion, bool descendente){
 
 		}
 		
-
-
 	}else{
 		//De manera Descendente
 
@@ -251,7 +204,7 @@ void Agenda::ordenar(int criterioOrdenacion, bool descendente){
 
 }
 
-
+//Funcion que devuelve bool para saber si un alumno esta en la agenda o no
 bool Agenda::esAlumno(Alumno aux){
 
 	list<Alumno>::iterator it;
@@ -268,6 +221,7 @@ bool Agenda::esAlumno(Alumno aux){
 
 }
 
+//Funcion que devuelve un alumno pasandole el DNI, si no, devuelve un alumno "vacio"
 Alumno Agenda::buscarAlumno(string dni){
 
 	Alumno vacio(0, 0, false, "0", "", "", "", "", 0, 0);
@@ -282,7 +236,7 @@ Alumno Agenda::buscarAlumno(string dni){
 
 }
 
-
+//Exporta a un fichero txt
 bool Agenda::exportar(){
 	ofstream f("agenda.txt");
 	string lider = "no";
@@ -302,6 +256,7 @@ bool Agenda::exportar(){
 	return true;
 }
 
+//importa de un fichero txt
 bool Agenda::importar(){
 	ifstream f("agenda.txt");
 	bool lider = false;
@@ -356,6 +311,7 @@ bool Agenda::importar(){
 }
 
 
+//Funcion que solo la puede usar un profesor colaborador, permite exportar la agenda a un fichero binario
 bool Agenda::exportarBackup(bool permiso, string name){
 
 	if (permiso==false)
@@ -363,13 +319,25 @@ bool Agenda::exportarBackup(bool permiso, string name){
 		return false;
 	}
 
-	ofstream fb(name.c_str(),  ios::out | ios::binary);
+	fstream fb(name.c_str(),  ios::app | ios::out | ios::in |ios::binary);
 	fb.seekp (0);
+	AlumnoAuxiliar Aux;
 	
 	for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
 	{
+
+		Aux.Curso = it->getCurso();
+		Aux.Equipo = it->getEquipo();
+		Aux.Lider = it->getLider();
+		Aux.Telefono = it->getTelefono();
+		Aux.Postal = it->getPostal();
+		strcpy(Aux.Nombre,it->getNombre().c_str());
+		strcpy(Aux.Apellidos,it->getApellidos().c_str());
+		strcpy(Aux.Nacimiento,it->getNacimiento().c_str());
+		strcpy(Aux.Dni,it->getDni().c_str());
+		strcpy(Aux.Correo,it->getCorreo().c_str());
 		
-		fb.write((char*)&(*it), sizeof (Alumno));
+		fb.write((char*)&(Aux), sizeof (Aux));
 		
 	}
 
@@ -378,30 +346,76 @@ bool Agenda::exportarBackup(bool permiso, string name){
 
 }
 
+
+//Funcion que solo la puede usar un profesor colaborador, permite importar de un fichero binar
 bool Agenda::inportarBackup(bool permiso, string name){
+
 	if (permiso==false)
 	{
 		return false;
 	}
-	Alumno aux;
-	ifstream fb(name.c_str(),  ios::in | ios::binary);
-	fb.seekg (0);
 
-	fb.read((char*)&aux, sizeof (Alumno));
-    insertar(aux);
-    
+	Alumno auxAlumno;
+	fstream fb(name.c_str(), ios::app | ios::in | ios::out | ios::binary);
+	fb.seekp (0);
+	AlumnoAuxiliar Aux;
+
+
+	fb.read((char*)&Aux, sizeof (Aux));
+
+    while(!fb.eof()){
+
+    	auxAlumno.setCurso(Aux.Curso);
+		auxAlumno.setEquipo(Aux.Equipo);
+		auxAlumno.setLider(Aux.Lider);
+		auxAlumno.setTelefono(Aux.Telefono);
+		auxAlumno.setPostal(Aux.Postal);
+		auxAlumno.setNombre(Aux.Nombre);
+		auxAlumno.setApellidos(Aux.Apellidos);
+		auxAlumno.setNacimiento(Aux.Nacimiento);
+		auxAlumno.setDni(Aux.Dni);
+		auxAlumno.setCorreo(Aux.Correo);
+
+
+
+    	insertar(auxAlumno);
+    	fb.read((char*)&Aux, sizeof (Aux));
+		
+	}
 
 
 	fb.close();
 	return true;
 }
 
-
+//Funcion que muestra toda la lista en formato markdown o HTML
 void Agenda::mostrarTodo(){
 
 
 	ofstream fs;
 	int opcion =2;
+	int criterio=4;
+	string auxOpcion;
+	bool opcionDescente;
+
+	do{
+		cout << "¿Según que parámetros desea que se muetre la lista?" << endl;
+		cout << " 0 -- Alfabeticamente" << endl << " 1 -- Segun Curso matriculado" << endl << " 2 -- segun DNI" << endl;
+		cin>>criterio;
+	}while( criterio < 0 || criterio > 3);
+
+	do{
+		cout << "¿Desea mostrar la agenda de forma ascendente? (Y/N)" << endl;
+		cin >> auxOpcion;
+	}while( auxOpcion != "Y" && auxOpcion != "N" );
+
+	if(auxOpcion == "Y"){
+		opcionDescente = false;
+		ordenar(criterio,opcionDescente);
+	}else if(auxOpcion == "N"){
+		opcionDescente = true;
+		ordenar(criterio,opcionDescente);
+	}
 
 
 	do{
@@ -412,7 +426,7 @@ void Agenda::mostrarTodo(){
 	}while ((opcion != 0) && (opcion != 1));
 
 	if(opcion == 0){
-		fs.open("todosAlumnos.md",std::ofstream::out | std::ofstream::app);
+		fs.open("todosAlumnos.md",std::ofstream::out);
 
 		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
 		{
@@ -433,49 +447,53 @@ void Agenda::mostrarTodo(){
 		fs << "---" << endl;
 	}else if(opcion == 1){
 
-		fs.open("todosAlumnos.html",std::ofstream::out | std::ofstream::app);
+		fs.open("todosAlumnos.html",std::ofstream::out );
 
 		fs << "<!DOCTYPE html>" << endl;
 		fs << "<html>" << endl;
 		fs << "<body>" << endl;
 		fs << "<h2> Tabla Con todos los alumnos de la agenda </h2>" << endl;
-		fs << "<table style=\"width:100%%\">" << endl;
-		fs << "<tr>" << endl;
-		fs << "\t</th>Nombre</th>" << endl;
-		fs << "\t</th>Apellidos</th>" << endl;
-		fs << "\t</th>DNI</th>" << endl;
-		fs << "\t</th>Telefono</th>" << endl;
-		fs << "\t</th>Correo</th>" << endl;
-		fs << "\t</th>Postal</th>" << endl;
-		fs << "\t</th>Nacimiento</th>" << endl;
-		fs << "\t</th>Curso</th>" << endl;
-		fs << "\t</th>Equipo</th>" << endl;
-		fs << "\t</th>Lider</th>" << endl;
-		fs << "</tr>" << endl;
+		fs << "<table style=\"width:100%\">" << endl;
+		fs << "\t<tr>" << endl;
+		fs << "\t\t<th>Nombre</th>" << endl;
+		fs << "\t\t<th>Apellidos</th>" << endl;
+		fs << "\t\t<th>DNI</th>" << endl;
+		fs << "\t\t<th>Telefono</th>" << endl;
+		fs << "\t\t<th>Correo</th>" << endl;
+		fs << "\t\t<th>Postal</th>" << endl;
+		fs << "\t\t<th>Nacimiento</th>" << endl;
+		fs << "\t\t<th>Curso</th>" << endl;
+		fs << "\t\t<th>Equipo</th>" << endl;
+		fs << "\t\t<th>Lider</th>" << endl;
+		fs << "\t</tr>" << endl;
 
 		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
 		{
-			fs << "<tr>" << endl;
-			fs << "\t<td>" << it->getNombre() << "</td>" << endl;
-			fs << "\t<td>" << it->getApellidos() << "</td>" << endl;
-			fs << "\t<td>" << it->getDni() << "</td>" << endl;
-			fs << "\t<td>" << it->getTelefono() << "</td>" << endl;
-			fs << "\t<td>" << it->getCorreo() << "</td>" << endl;
-			fs << "\t<td>" << it->getPostal() << "</td>" << endl;
-			fs << "\t<td>" << it->getNacimiento() << "</td>" << endl;
-			fs << "\t<td>" << it->getCurso() << "</td>" << endl;
-			fs << "\t<td>" << it->getEquipo() << "</td>" << endl;
-			fs << "</tr>" << endl;
+			fs << "\t<tr>" << endl;
+			fs << "\t\t<td>" << it->getNombre() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getApellidos() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getDni() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getTelefono() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getCorreo() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getPostal() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getNacimiento() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getCurso() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getEquipo() << "</td>" << endl;
+			fs << "\t\t<td>" << it->getLider() << "</td>" << endl;
+			fs << "\t</tr>" << endl;
 
 
 		}
-			fs << "</table>" << endl;
-			fs << "</body>" << endl;
-			fs << "</html>" << endl;
+
+
+		fs << "</table>" << endl;
+		fs << "</body>" << endl;
+		fs << "</html>" << endl;
 
 	}
 }
 
+//Funcion que permite mostrar todos los alumnos de un mismo equipo 
 bool Agenda::mostrarEquipo(int equipo){
 
 	ofstream fs;
@@ -518,86 +536,41 @@ bool Agenda::mostrarEquipo(int equipo){
 		fs << "<html>" << endl;
 		fs << "<body>" << endl;
 		fs << "<h2> Tabla Con todos los alumnos de la agenda </h2>" << endl;
-		fs << "<table style=\"width:100%%\">" << endl;
-		fs << "<tr>" << endl;
-		fs << "\t</th>Nombre</th>" << endl;
-		fs << "\t</th>Apellidos</th>" << endl;
-		fs << "\t</th>DNI</th>" << endl;
-		fs << "\t</th>Telefono</th>" << endl;
-		fs << "\t</th>Correo</th>" << endl;
-		fs << "\t</th>Postal</th>" << endl;
-		fs << "\t</th>Nacimiento</th>" << endl;
-		fs << "\t</th>Curso</th>" << endl;
-		fs << "\t</th>Equipo</th>" << endl;
-		fs << "\t</th>Lider</th>" << endl;
-		fs << "</tr>" << endl;
+		fs << "<table style=\"width:100%\">" << endl;
+		fs << "\t<tr>" << endl;
+		fs << "\t\t<th>Nombre</th>" << endl;
+		fs << "\t\t<th>Apellidos</th>" << endl;
+		fs << "\t\t<th>DNI</th>" << endl;
+		fs << "\t\t<th>Telefono</th>" << endl;
+		fs << "\t\t<th>Correo</th>" << endl;
+		fs << "\t\t<th>Postal</th>" << endl;
+		fs << "\t\t<th>Nacimiento</th>" << endl;
+		fs << "\t\t<th>Curso</th>" << endl;
+		fs << "\t\t<th>Equipo</th>" << endl;
+		fs << "\t\t<th>Lider</th>" << endl;
+		fs << "\t</tr>" << endl;
 
 		for (list<Alumno>::iterator it=_listaAlumnos.begin(); it != _listaAlumnos.end(); ++it)
 		{
 
 			if(it->getEquipo() == equipo){
-				fs << "<tr>" << endl;
-				fs << "\t<td>" << it->getNombre() << "</td>" << endl;
-				fs << "\t<td>" << it->getApellidos() << "</td>" << endl;
-				fs << "\t<td>" << it->getDni() << "</td>" << endl;
-				fs << "\t<td>" << it->getTelefono() << "</td>" << endl;
-				fs << "\t<td>" << it->getCorreo() << "</td>" << endl;
-				fs << "\t<td>" << it->getPostal() << "</td>" << endl;
-				fs << "\t<td>" << it->getNacimiento() << "</td>" << endl;
-				fs << "\t<td>" << it->getCurso() << "</td>" << endl;
-				fs << "\t<td>" << it->getEquipo() << "</td>" << endl;
-				fs << "</tr>" << endl;
+				fs << "\t<tr>" << endl;
+				fs << "\t\t<td>" << it->getNombre() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getApellidos() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getDni() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getTelefono() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getCorreo() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getPostal() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getNacimiento() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getCurso() << "</td>" << endl;
+				fs << "\t\t<td>" << it->getEquipo() << "</td>" << endl;
+				fs << "\t</tr>" << endl;
 			}
 
 		}
 			fs << "</table>" << endl;
 			fs << "</body>" << endl;
 			fs << "</html>" << endl;
-	}
-}
-
-//Pues hay un problema, no se si mostrar alumno se le tiene que pasar un alumno o un dni asi que hago ambas y se borra la que no sea
-
-bool Agenda::mostrarAlumno(Alumno aux){
-
-	ofstream fs;
-	Alumno alumnoMostrado(0, 0, false, "0", "", "", "", "", 0, 0);
-
-	if(esAlumno(aux)){
-
-		alumnoMostrado = buscarAlumno(aux.getDni());
-
-		string NombreAux = alumnoMostrado.getNombre() + ".md"; 
-		char NombreFichero[100];
-		strcpy(NombreFichero,NombreAux.c_str());
-		fs.open (NombreFichero, std::ofstream::out | std::ofstream::app);
-
-		if(fs.is_open()){
-
-			fs << "---" << endl;
-			fs << " Nombre: " << alumnoMostrado.getNombre() << endl;
-			fs << " Apellidos: " << alumnoMostrado.getApellidos() << endl;
-			fs << " DNI: " << alumnoMostrado.getDni() << endl;
-			fs << " Telefono: " << alumnoMostrado.getTelefono() << endl;
-			fs << " Correo: " << alumnoMostrado.getCorreo() << endl;
-			fs << " Postal: " << alumnoMostrado.getPostal() << endl;
-			fs << " Nacimiento: " << alumnoMostrado.getNacimiento() << endl;
-			fs << " Curso: " << alumnoMostrado.getCurso() << endl;
-			fs << " Equipo: " << alumnoMostrado.getEquipo() << endl;
-			fs << " **Lider: " << alumnoMostrado.getLider() <<"**" << endl;
-			fs << "---" << endl;
-
-			fs.close();
-
-		}else{ 
-
-			return false;
-		}
-
-	}else{
-
-		return false;
-
 	}
 }
 
@@ -611,12 +584,20 @@ bool Agenda::mostrarAlumno(string dni){
 
 		alumnoMostrado = buscarAlumno(dni);
 
-		string NombreAux = alumnoMostrado.getNombre() + ".md"; 
-		char NombreFichero[100];
-		strcpy(NombreFichero,NombreAux.c_str());
-		fs.open (NombreFichero, std::ofstream::out | std::ofstream::app);
+		int opcion;
 
-		if(fs.is_open()){
+		do{
+
+			cout << "En que formato desea el fichero: markdown (0) o HTML (1)" << endl;
+			cin >>opcion;
+
+		}while ((opcion != 0) && (opcion != 1));
+
+		if(opcion == 0){
+			string NombreAux = alumnoMostrado.getNombre() + ".md"; 
+			fs.open(NombreAux.c_str(),std::ofstream::out);
+
+
 
 			fs << "---" << endl;
 			fs << " Nombre: " << alumnoMostrado.getNombre() << endl;
@@ -628,25 +609,55 @@ bool Agenda::mostrarAlumno(string dni){
 			fs << " Nacimiento: " << alumnoMostrado.getNacimiento() << endl;
 			fs << " Curso: " << alumnoMostrado.getCurso() << endl;
 			fs << " Equipo: " << alumnoMostrado.getEquipo() << endl;
-			fs << " **Lider: " << alumnoMostrado.getLider() <<"**" << endl;
+			fs << " **Lider: " << alumnoMostrado.getLider() <<"**" << endl;		
 			fs << "---" << endl;
+		
 
-			fs.close();
+		}else if(opcion == 1){
+			string NombreAux = alumnoMostrado.getNombre() + ".html"; 
+			fs.open(NombreAux.c_str(),std::ofstream::out);
 
-		}else{ 
+			fs << "<!DOCTYPE html>" << endl;
+			fs << "<html>" << endl;
+			fs << "<body>" << endl;
+			fs << "<h2> Tabla Con todos los alumnos de la agenda </h2>" << endl;
+			fs << "<table style=\"width:100%\">" << endl;
+			fs << "\t<tr>" << endl;
+			fs << "\t\t<th>Nombre</th>" << endl;
+			fs << "\t\t<th>Apellidos</th>" << endl;
+			fs << "\t\t<th>DNI</th>" << endl;
+			fs << "\t\t<th>Telefono</th>" << endl;
+			fs << "\t\t<th>Correo</th>" << endl;
+			fs << "\t\t<th>Postal</th>" << endl;
+			fs << "\t\t<th>Nacimiento</th>" << endl;
+			fs << "\t\t<th>Curso</th>" << endl;
+			fs << "\t\t<th>Equipo</th>" << endl;
+			fs << "\t\t<th>Lider</th>" << endl;
+			fs << "\t</tr>" << endl;
 
-			return false;
+			fs << "\t<tr>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getNombre() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getApellidos() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getDni() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getTelefono() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getCorreo() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getPostal() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getNacimiento() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getCurso() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getEquipo() << "</td>" << endl;
+			fs << "\t\t<td>" << alumnoMostrado.getLider() << "</td>" << endl;
+			fs << "\t</tr>" << endl;
+
+
+			fs << "</table>" << endl;
+			fs << "</body>" << endl;
+			fs << "</html>" << endl;
+
 		}
-
-
-	}else{
-
-		return false;
-
 	}
-
 }
 
+//Funcion que permite modificar un alumno
 bool Agenda::modificar(string dni){
 
 	Alumno modificar;
@@ -714,10 +725,8 @@ bool Agenda::modificar(string dni){
 
 }
 
-
-
+//funcion que permite borrar un alumno
 bool Agenda::borrarAlumno(string dni){
-
 
 	Alumno borrado;
 

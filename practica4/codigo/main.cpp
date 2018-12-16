@@ -18,10 +18,74 @@
 #include "profesor.hpp"
 #include "agenda.hpp"
 
+struct profesorAuxiliar{
+
+	char id[50];
+	char pass[50];
+	int rol;
+
+};
+
 
 
 using namespace std;
 
+bool login(Profesor profesor){
+
+	profesorAuxiliar Aux;
+
+	
+	fstream fb("registro.bin", ios::app | ios::in | ios::out | ios::binary);
+
+	fb.seekg (0);
+
+	fb.read((char*)&Aux, sizeof(profesorAuxiliar));
+
+	while(!fb.eof()){
+
+
+		if (profesor.getId().compare(Aux.id)== 0 && profesor.getPass().compare(Aux.pass)==0 )
+		{
+			cout << "Acceso permitido.";
+			
+			cin.ignore();
+
+			fb.close();
+			return true;
+		}
+
+		fb.read((char*)&Aux, sizeof(profesorAuxiliar));
+
+	}
+
+
+	fb.close();
+	
+	return false;
+
+}
+
+
+bool registrar(Profesor profesorAux){
+
+	fstream fb("registro.bin", ios::app | ios::out | ios::in |ios::binary);
+	fb.seekp (ios_base::end);
+
+	profesorAuxiliar Aux;
+	
+	strcpy(Aux.id,profesorAux.getId().c_str());
+	strcpy(Aux.pass,profesorAux.getPass().c_str());
+	Aux.rol = profesorAux.getRol();
+
+	fb.write((char*)&(Aux), sizeof (Aux));
+
+	fb.close();
+	return true;
+
+}
+
+
+/* Login de jp
 bool login(string id, string pass, int *rol){
 	
 	char *auxid= new char[50];
@@ -53,7 +117,10 @@ bool login(string id, string pass, int *rol){
 	return false;
 
 }
+*/
 
+
+/*	registrar de jp
 bool registrar(string id, string pass, int rol){
 
 	fstream fb("registro.bin", ios::app | ios::in | ios::out | ios::binary);
@@ -73,7 +140,7 @@ bool registrar(string id, string pass, int rol){
 
 	fb.close();
 
-}
+}*/
 
 
 int main(){
@@ -86,6 +153,7 @@ int main(){
 	int newrol;
 
 	Alumno aux(2, 3, true, "31015701V", "12/12/1222", "mj", "JP", "correo", 657462286, 145002);
+	Profesor profesorAux;
 	Alumno aux2(1, 4, true, "30990856N", "33/33/3333", "lr", "JAVI", "correoCasi", 650328761, 14014);
 	Agenda agenda;
 	string nombreBackup;
@@ -106,9 +174,12 @@ int main(){
 		cout << "Introduzca Contraseña: ";
 		cout << RESET;
 		cin>> pass;
+
+		profesorAux.setId(id);
+		profesorAux.setPass(pass);
    		
 		cin.ignore();
-	}while(login(id, pass, &rol)==false);
+	}while(login(profesorAux)==false);
 
 
 	
@@ -195,10 +266,6 @@ int main(){
 					cin.ignore();
 
 					break;
-
-
-////////////////////////////////////////////////////////////////////////////
-					////////////////////////////////////////////////////
 
 
 			case 5: 
@@ -352,7 +419,7 @@ int main(){
 					cout << BIBLUE;
 					cout << "[11] Resgistrar Profesor." << endl;
 					cout << RESET;
-
+							
 					cout << "Introduzca la ID: ";
 					cin >> newid;
 					cout << "Introduzca el rol (0 Jefe de departamento / 1 subordinado): ";
@@ -360,10 +427,22 @@ int main(){
 					cout << "Introduzca la contraseña: ";
 					cin >> newpass;
 
-					if(registrar(newid, newpass, newrol)){
+					profesorAux.setId( newid);
+					profesorAux.setPass(newpass);
+					profesorAux.setRol(newrol);
+
+					if(registrar(profesorAux)){
 						cout << "Profesor registrado con exito." << endl;
+
+						cout << "Datos introducidos" << endl;
+						cout << profesorAux.getId() << endl;
+						cout << profesorAux.getPass() << endl;
+						cout << profesorAux.getRol() << endl;
+
 						cin.ignore();
 					}
+
+					
 					break;
 
 
@@ -379,24 +458,24 @@ int main(){
 				cout << RESET;
      }
   
-    if (opcion !=0)
-    {
-		PLACE(25,1);
-		cout << "Pulse ";
-		cout << BIGREEN;
-		cout << "ENTER";
-		cout << RESET;
-		cout << " para mostrar el ";
-		cout << INVERSE;
-		cout << "menú"; 
-		cout << RESET;
+	    if (opcion !=0)
+	    {
+			PLACE(25,1);
+			cout << "Pulse ";
+			cout << BIGREEN;
+			cout << "ENTER";
+			cout << RESET;
+			cout << " para mostrar el ";
+			cout << INVERSE;
+			cout << "menú"; 
+			cout << RESET;
 
-		// Pausa
-		cin.ignore();
+			// Pausa
+			cin.ignore();
 
-		cout << CLEAR_SCREEN;
-    }
-	  }while(opcion!=0);
+			cout << CLEAR_SCREEN;
+	    }
+	}while(opcion!=0);
 
 	return 0;
 }
