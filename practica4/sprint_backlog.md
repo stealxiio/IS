@@ -1,4 +1,4 @@
-**__ETREGA FINAL__**
+**__ENTREGA FINAL__**
 
 **Juan Pedro:** *Esqueleto de las clases [**id 00**], Buscar [**id 02**], Ordenar(ayudando) [**id 10**], interfaz [**id 15**], Exportar [**id 08**], importar [**id 09**], Crear_backup [**id 12**], Cargar_backup [**id 13**]*
 
