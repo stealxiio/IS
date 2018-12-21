@@ -1,7 +1,7 @@
 ## Login
 
 **ID:** 011
-**Breve descripción:** Se importa los datos de la los profesores registrados.
+**Breve descripción:** El usuario accede al sistema identificandose como profesor.
 
 ___
 
