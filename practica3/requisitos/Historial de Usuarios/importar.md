@@ -5,7 +5,7 @@ ___
 
 Quiero poder importar los datos desde un fichero de texto.
 
-**Prioridad:** 2
+**Prioridad:** 5
 ___
 
 
