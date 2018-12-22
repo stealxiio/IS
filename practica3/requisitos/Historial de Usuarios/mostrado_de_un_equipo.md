@@ -12,8 +12,6 @@ ___
 ## (REVERSO)
 ___
 
-* busqueda de los alumnos dado un número de equipo.
-* quiero que se muestre en HTML o Markdown.
+* Quiero que se muestre en HTML o Markdown.
 * El dato de liderazgo debera ir resaltado.
-* Orden alfabetico, por DNI o por ultimo curso matriculado (tanto ascendiente como descendiente).
 ___
