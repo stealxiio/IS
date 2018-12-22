@@ -32,5 +32,5 @@ ___
    
 **Flujo alternativo**
   
-    1a. En el caso de no haber datos sobre el equipo escogido en el sistema, se volverá al menú principal avisando al profesor de que no hay datos de ese equipo.
+   1a. En el caso de no haber datos sobre el equipo escogido en el sistema, se volverá al menú principal avisando al profesor de que no hay datos de ese equipo.
   
