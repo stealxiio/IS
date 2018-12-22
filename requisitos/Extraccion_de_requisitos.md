@@ -2,7 +2,7 @@
 
 
 ### Partes interesadas:
-**Contratante:** Duran Rosal, Antonio Manuel.                                         
+**Contratante:** Duran Rosal, Antonio Manuel. Guijo Rubio, David                                               
 **Contratados:** Muñoz Jiménez, Juan Pedro. Lozano Rojas, Javier. Ruiz Requena, Pablo.
 
 
@@ -31,5 +31,6 @@ El cliente quiere una aplicacion con la cual poder almacenar y consultar datos d
 
 **Login:** La aplicacion debera de tener un sistema de login y registro.                  
 **Sistema:** La aplicacion debera ser comnpatible con Unix linus.                                                            
+**Estructura de clases:** El programa debe trabajar sobre una estructura absada en clases y herencias.
 **Interfaz:** La aplicacion debera funcionar con lineas de comandos por consola.  
 **Seguridad:** Alguien que no este autorizado no debera poder modificar los datos almacenados. Asi como no se podra introducir datos erroneos (Ej: Un dni que no conste de 8 numeros y una letra) o duplicados (Ej: dos alumnos con el mismo dni).                
