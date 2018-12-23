@@ -28,12 +28,12 @@ Los usuarios de la aplicación seran los profesores, los cuales seran diferencia
 **Cargar:** Funcion que cargue la lista desde un fichero.                                        
 **Exportar backup:** Capacidad de exportar una copia de seguridad a un fichero binario. Solo el coordinador puede usar esta función.                                                                     
 **Importar backup:** Capacidad de importar una copia de seguridad desde un fichero binario. Solo el coordinador puede usar esta función.                                                                 
+**Login:** La aplicacion debera de tener un sistema de login y registro.                    
 
 
 ### Requisitos No_Funcionales:
 
 **Cargar credenciales:** Al iniciar la aplicación cargara automaticamente el fichero binario con los credenciales de los profesores.                    
-**Login:** La aplicacion debera de tener un sistema de login y registro.         
 **Sistema:** La aplicación debera ser comnpatible con Unix linus.                                                            
 **Interfaz:** La aplicación debera funcionar con lineas de comandos por consola.                                                  
 **Estructura de clases:** El programa debe trabajar sobre una estructura absada en clases y herencias.
