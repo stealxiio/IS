@@ -2,7 +2,7 @@
 
 
 ### Partes interesadas:
-**Contratante:** Duran Rosal, Antonio Manuel.                                         
+**Contratante:** Duran Rosal, Antonio Manuel. Guijo Rubio, David                                               
 **Contratados:** Muñoz Jiménez, Juan Pedro. Lozano Rojas, Javier. Ruiz Requena, Pablo.
 
 
@@ -12,7 +12,6 @@ El cliente quiere una aplicacion con la cual poder almacenar y consultar datos d
 
 
 ### Requisitos Funcionales:
-*(En orden de priorización)*
 
 **Inserción:** Capacidad de insertar alumnos introduciendo como minimo todos los datos excepto equipo y lider de equipo.           
 **Busqueda:** Busqueda de alumnos dado un DNI, un apellido y (opcional) un numero de equipo. En el caso de apellido, si hay varios alumnos con el mismo, se pedira el DNI.                                                                                       
@@ -22,12 +21,16 @@ El cliente quiere una aplicacion con la cual poder almacenar y consultar datos d
 **Modificación:** Busqueda y modificacion de los datos de un alumno.                                                             
 **Mostrado de todos los alumnos:** Capacidad de mostrar todos los alumnos de las siguientes maneras: Orden alfabetico (tanto ascendente como descendiente), orden por DNI, orden por curso (Tanto ascendente como descendente).                             
 **Mostrado de todos los alumnos de un equipo:** igual que el anterior pero solo los alumnos de grupo proporcionado.              
-**Exportar:** Capacidad de exportar a un fichero binario. Solo el coordinador puede usar esta función.                                                                     
-**Importar:** Capacidad de importar desde un fichero binario. Solo el coordinador puede usar esta función.                                                                 
+**Guardar:** Funcion que guarde el estado de la lista en un fichero.                            
+**Cargar:** Funcion que cargue la lista desde un fichero.                                        
+**Exportar backup:** Capacidad de exportar una copia de seguridad a un fichero binario. Solo el coordinador puede usar esta función.                                                                     
+**Importar backup:** Capacidad de importar una copia de seguridad desde un fichero binario. Solo el coordinador puede usar esta función.                                                                 
 
 
 ### Requisitos No_Funcionales:
 
+**Login:** La aplicacion debera de tener un sistema de login y registro.                  
 **Sistema:** La aplicacion debera ser comnpatible con Unix linus.                                                            
-**Interfaz:** La aplicacion debera funcionar con lineas de comandos por consola.                                                  
+**Estructura de clases:** El programa debe trabajar sobre una estructura absada en clases y herencias.
+**Interfaz:** La aplicacion debera funcionar con lineas de comandos por consola.  
 **Seguridad:** Alguien que no este autorizado no debera poder modificar los datos almacenados. Asi como no se podra introducir datos erroneos (Ej: Un dni que no conste de 8 numeros y una letra) o duplicados (Ej: dos alumnos con el mismo dni).                

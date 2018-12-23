@@ -6,6 +6,7 @@ ___
 Funcion encargada de comprobar la id del profesor para garantizarle acceso a la lista.
 
 **Prioridad:** 00
+
 ___
 
 
@@ -13,4 +14,5 @@ ___
 ___
 
 * Comprobara la id del profesor con respecto a un fichero binario previamente cargado.
+
 ___
