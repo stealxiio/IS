@@ -1,16 +1,18 @@
 ## (ANVERSO)
 
-**ID:** 011 **Login**
+**ID:** 011 **login**
 ___
 
-Quiero poder logearme como profesor al sistema.
+Funcion encargada de comprobar la id del profesor para garantizarle acceso a la lista.
 
-**Prioridad:** 0
+**Prioridad:** 00
+
 ___
 
 
 ## (REVERSO)
 ___
 
-* Quiero que guarde diferentes perfiles de profesores con sus correspondientes identificaciones y contraseñas
+* Comprobara la id del profesor con respecto a un fichero binario previamente cargado.
+
 ___
